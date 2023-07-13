@@ -4,8 +4,8 @@
     <h2>"주변 운동장 정보를 찾고 싶을 때"</h2>
   </header>
   <main>
-    <p class="about">ABOUT US</p>
-    <p></p>
+    <div class="about"><b>ABOUT US</b></div>
+    <div class="aboutus"></div>
   </main>
 </template>
 
@@ -20,5 +20,12 @@ h1 {
 }
 h2 {
   padding: 5px;
+}
+.about {
+  font-size: large;
+}
+
+.aboutus {
+  font-size: medium;
 }
 </style>
