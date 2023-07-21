@@ -75,7 +75,6 @@ header{
   padding-left:20px;  /* 왼쪽에 여백 */
 }
 #logo h1 {
-  font-family:'Merienda', cursive;
   font-weight:700;
   font-size:30px;   /* 글자 크기 */
   color:#fff;   /* 글자 색*/
