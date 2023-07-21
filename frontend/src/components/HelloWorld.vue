@@ -18,6 +18,13 @@
           </ul>
         </nav>
       </header>
+      <body>
+        <p id="description">Where To Play?</p>
+        <h1>#주변 운동장을 쉽게 찾고 싶을 때</h1>
+        <h1>#통합된 서비스</h1>
+        <h1>#예약 링크까지 바로 이동</h1>
+        <button id="start">시작 하기</button>
+      </body>
       <footer>    
         <section id="bottomMenu">
           <ul>
@@ -52,7 +59,7 @@ ul {
 
 #container {
   margin:0 auto;  /* 화면 중앙에 배치 */
-  width:1200px;    /* 너비 */
+  width:100%;    /* 너비 */
 }
 
 /*********************************/
@@ -63,6 +70,7 @@ header{
   width:100%;    /*  너비 */
   height:100px;   /* 높이 */ 
   background-color:rgb(71, 110, 169);
+  
   
 }
 
@@ -81,6 +89,14 @@ header{
   text-shadow:0 -1px 0 #222;  /* 그림자 색 */
 }
 
+#description {
+  font-weight: 700;
+  font-size: 70px;
+}
+#start {
+  font-weight: 700;
+  font-size: 50px;
+}
 /* 내비게이션 */
 nav{  
   float:right;   /* 오른쪽으로 플로팅 */
@@ -93,6 +109,7 @@ nav{
 }
 #topMenu > li {
   float:right;  /* 메뉴 항목을 왼쪽으로 플로팅 */ 
+  
   position: relative;  
 }
 #topMenu > li > a{
@@ -101,6 +118,7 @@ nav{
   color:#fff;  /* 글자 색 */
   font-weight:600;  /* 글자 굵기 */
   padding:20px 60px;  /* 패딩 */ 
+
 }
 #topMenu > li > a:hover {
   color:#1fa8f8;
@@ -111,7 +129,7 @@ nav{
 
 
 footer{   
-  width:1200px;   /* 너비 */
+  width:100%;   /* 너비 */
   height:100px;  /* 높이 */
   border-top:2px solid #222;
 }
