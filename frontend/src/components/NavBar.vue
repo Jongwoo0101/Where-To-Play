@@ -52,15 +52,16 @@
             margin-top: 5px;
         }
         .burger-bar.toggle {
-            @keyframes slidein {
-                from {
-                    background-color: black;
-                    margin-top: 5px;
-                }
-                to {
-                    background-color: red;
-                    margin-top: 5px;
-                }
+            
+        }
+        @keyframes slidein {
+            from {
+                background-color: black;
+                margin-top: 5px;
+            }
+            to {
+                background-color: red;
+                margin-top: 5px;
             }
         }
     }
