@@ -38,7 +38,7 @@ nav ul {
 
 nav ul li {
   display: inline;
-  margin-right: 10px; /* 메뉴 항목 사이 간격을 10px로 조정 */
+  margin-right: 120px; /* 메뉴 항목 사이 간격을 10px로 조정 */
 }
 
 nav ul li:last-child {
@@ -60,6 +60,7 @@ nav ul li a {
   color: white;
   text-decoration: none;
   font-size: 15px; /* 로그인/회원가입 메뉴 글자 크기를 18px로 조정 */
+  margin-right: 10px;
 }
 
 .divider {
