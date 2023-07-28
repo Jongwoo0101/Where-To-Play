@@ -1,1 +1,5 @@
 node_modules
+.vscode
+.env
+/backend/secrets.json
+/backend/backend/__pycache__
