@@ -1,30 +1,36 @@
 <template>
-  <div>
-    <header>
-      <div id="logo">
-        <h1>Where To Play</h1>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Where To Play</title>
+  <link rel="stylesheet" href="./mpstyle.css">
+</head>
+<body>
+  <header>
+    <div class="logo-menu-container">
+      <div class="logo">
+        <h1>Where To Play</h1> <!-- 로고 텍스트 -->
       </div>
       <nav>
-        <ul id="topMenu">
+        <ul>
+          <!-- Your menu items go here -->
           <li><a href="#">메인</a></li>
           <li><a href="#">운동장 찾기</a></li>
           <li><a href="#">운동장 등록</a></li>
-          <li><a href="#">테마 지도</a></li>
+          <li><a href="#">테마지도</a></li>
         </ul>
       </nav>
-    </header>
+    </div>
+    <div class="user-menu">
+      <a href="#">로그인</a> <!-- 로그인 링크 -->
+      <span class="divider">|</span> <!-- 세로 막대 -->
+      <a href="#">회원가입</a> <!-- 회원가입 링크 -->
+    </div>
+  </header>
+  <!-- The rest of your website content goes here -->
+</body>
+</html>
 
-    <footer>
-      <section id="bottomMenu">
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">개인정보처리방침</a></li>
-          <li><a href="#">이용약관</a></li>
-          <li><a href="#">사이트맵</a></li>
-        </ul>
-      </section>
-    </footer>
-  </div>
 </template>
 
 <script>
@@ -32,104 +38,74 @@
 </script>
 
 <style>
-* {
+/* styles.css */
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-a {
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-}
-
-#container {
-  margin: 0 auto;
-  width: 100%;
 }
 
 header {
-  width: 100%;
-  height: 100px;
-  background-color: rgb(71, 110, 169);
+  background-color: black; /* 상단 바 색깔 */
+  color: white; /* 글자 색깔 */
+  display: flex;
+  justify-content: space-between; /* 로고와 메뉴, 로그인/회원가입 메뉴 간격 자동 조정 */
+  align-items: center;
+  padding: 10px;
+  height: 80px; /* 상단 바 높이를 80px로 조정 */
 }
 
-#logo {
-  float: left;
-  width: 250px;
-  height: 100px;
-  line-height: 100px;
-  padding-left: 20px;
+.logo-menu-container {
+  display: flex;
+  align-items: center;
 }
 
-#logo h1 {
-  font-weight: 700;
-  font-size: 30px;
-  color: #fff;
-  text-shadow: 0 -1px 0 #222;
+.logo {
+  margin-right: 200px; /* 로고와 메뉴 사이 간격을 30px로 조정 */
+  margin-left: 30px;
 }
 
-nav {
-  float: left;
-  width: 900px;
-  height: 100px;
-  line-height: 70px;
+.logo h1 {
+  margin: 0; /* 로고 텍스트의 기본 여백 제거 */
+  color: white; /* 로고 텍스트 색상 설정 */
+  font-size: 30px; /* 로고 텍스트 크기를 24px로 조정 */
 }
 
-#topMenu {
-  height: 60px;
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-#topMenu > li {
-  float: left;
-  position: relative;
+nav ul li {
+  display: inline;
+  margin-right: 120px; /* 메뉴 항목 사이 간격을 10px로 조정 */
 }
 
-#topMenu > li > a {
-  display: block;
-  font-size: 1.1em;
-  color: #fff;
-  font-weight: 600;
-  padding: 20px 60px;
+nav ul li:last-child {
+  margin-right: 0; /* 마지막 메뉴 항목 오른쪽 간격 제거 */
 }
 
-#topMenu > li > a:hover {
-  color: #1fa8f8;
-  text-shadow: 0 -2px #222;
+nav ul li a {
+  color: white; /* 메뉴 항목 글자 색깔 */
+  text-decoration: none;
+  font-size: 20px; /* 메뉴 항목 글자 크기를 18px로 조정 */
 }
 
-footer {
-  width: 100%;
-  height: 100px;
-  border-top: 2px solid #222;
+.user-menu {
+  display: flex;
+  align-items: center;
 }
 
-#bottomMenu {
-  width: 100%;
-  height: 20px;
-  margin-left: 60px;
+.user-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px; /* 로그인/회원가입 메뉴 글자 크기를 18px로 조정 */
+  margin-right: 10px;
 }
 
-#bottomMenu ul {
-  margin-top: 15px;
+.divider {
+  color: white;
+  margin-right: 10px; /* 세로 막대(|)와 로그인/회원가입 메뉴 사이 간격 조정 */
 }
 
-#bottomMenu ul li {
-  float: left;
-  padding: 5px 20px;
-  border-right: 1px solid #ddd;
-}
-
-#bottomMenu ul li:last-child {
-  border: none;
-}
-
-#bottomMenu ul li a,
-#bottomMenu ul li a:visited {
-  font-size: 15px;
-  color: #666;
-}
 </style>
