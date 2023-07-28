@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .background {
+    background-image: url("/images/background.jpeg"); /* 배경 이미지 URL을 여기에 입력 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh; /* 화면 높이를 100vh로 설정하여 화면 전체를 채웁니다. */
+  }
+  
