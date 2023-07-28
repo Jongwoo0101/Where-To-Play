@@ -1,13 +1,220 @@
 body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .background {
+  margin: 0;
+  padding: 0;
+}
+.background {
     background-image: url("/images/background.jpeg"); /* 배경 이미지 URL을 여기에 입력 */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 100vh; /* 화면 높이를 100vh로 설정하여 화면 전체를 채웁니다. */
-  }
-  
+    height: 100vh; 
+}
+
+.Login {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+}
+
+.BleronSalihiFrjzqoacedaUnsplash1 {
+  width: 1918px;
+  height: 1079px;
+  left: 1px;
+  top: 0px;
+  position: absolute;
+}
+
+.Group2 {
+  width: 954.42px;
+  height: 725px;
+  left: 546.27px;
+  top: 177px;
+  position: absolute;
+}
+
+.Rectangle10 {
+  width: 817.82px;
+  height: 699.08px;
+  left: 30.10px;
+  top: 25.92px;
+  position: absolute;
+  background: #707070;
+}
+
+.Rectangle4 {
+  width: 817.82px;
+  height: 699.08px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: white;
+}
+
+.Button {
+  width: 212px;
+  height: 87px;
+  left: 544.73px;
+  top: 489px;
+  position: absolute;
+  position: absolute;
+  background: #B1C1FA;
+  border-radius: 90px;
+
+}
+
+
+.LoginText {
+  width: 212px;
+  height: 40px;
+  left: 0;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%); /* 수직 정렬을 위한 translateY 적용 */
+  text-align: center;
+  color: black;
+  font-size: 24px;
+  font-family: Noto Sans KR;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+/* 기존 스타일들 이하 생략 */
+
+
+.Rectangle6Input {
+  width: 691.55px;
+  height: 61.88px;
+  left: 65.22px;
+  top: 232.47px;
+  position: absolute;
+  background: #F8F8F8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  border-bottom: 3px #B1C1FA solid;
+}
+
+.Rectangle7Input {
+  width: 691.55px;
+  height: 61.88px;
+  left: 65.22px;
+  top: 349.54px;
+  position: absolute;
+  background: #F8F8F8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  border-bottom: 3px #B1C1FA solid;
+}
+
+.Email {
+  width: 116.23px;
+  height: 31.78px;
+  left: 66.90px;
+  top: 200.69px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-family: Inter;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Password {
+  width: 116.23px;
+  height: 31.78px;
+  left: 65.22px;
+  top: 317.76px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-family: Inter;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.ForgotYourPassword {
+  width: 445px;
+  height: 28px;
+  left: 190.73px;
+  top: 419px;
+  position: absolute;
+  text-align: right;
+  color: black;
+  font-size: 24px;
+  font-family: Inter;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.ClickHereButton {
+  width: 113.73px;
+  height: 27.60px;
+  left: 643.05px;
+  top: 417.27px;
+  position: absolute;
+  text-align: right;
+  color: #0085FF;
+  font-size: 24px;
+  font-family: Inter;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.CreateYourAccountButton {
+  width: 239px;
+  height: 28px;
+  left: 66.73px;
+  top: 625px;
+  position: absolute;
+  color: #0085FF;
+  font-size: 24px;
+  font-family: Inter;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Rectangle8Button {
+  width: 45.16px;
+  height: 45.16px;
+  left: 305.73px;
+  top: 608px;
+  position: absolute;
+  background: linear-gradient(0deg, rgba(214.62, 214.62, 214.62, 0.20) 0%, rgba(214.62, 214.62, 214.62, 0.20) 100%);
+  background-image: url("/images/googleicon.png");
+}
+
+.Rectangle9Button {
+  width: 45.16px;
+  height: 45.16px;
+  left: 363.42px;
+  top: 608px;
+  position: absolute;
+  background: linear-gradient(0deg, rgba(214.62, 214.62, 214.62, 0.20) 0%, rgba(214.62, 214.62, 214.62, 0.20) 100%);
+  background-image: url("/images/instagramicon.png");
+}
+
+.WhereYouWant {
+  width: 685.70px;
+  height: 138.81px;
+  left: 268.73px;
+  top: 107px;
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-size: 36px;
+  font-family: Noto Sans;
+  font-weight: 100;
+  word-wrap: break-word;
+}
+
+.WhereToPlay {
+  width: 685.70px;
+  height: 138.81px;
+  left: 70.73px;
+  top: 38px;
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-size: 64px;
+  font-family: Noto Sans;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
