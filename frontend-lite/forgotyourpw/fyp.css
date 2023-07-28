@@ -1,0 +1,180 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.ForgotYourPassword {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    background: white;
+}
+
+.BleronSalihiFrjzqoacedaUnsplash1 {
+    width: 1918px;
+    height: 1079px;
+    left: 2px;
+    top: 1px;
+    position: absolute;
+}
+
+.Group1 {
+    width: 425px;
+    height: 767px;
+    left: 352px;
+    top: 136px;
+    position: absolute;
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+
+.Rectangle14 {
+    width: 384px;
+    height: 688px;
+    left: 41px;
+    top: 79px;
+    position: absolute;
+    background: #656565;
+}
+
+.Rectangle12 {
+    width: 386px;
+    height: 699px;
+    left: 0px;
+    top: 42px;
+    position: absolute;
+    background: white;
+}
+
+.SadEmojiContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.SadEmoji {
+    color: #4971FF;
+    font-size: 400px;
+    font-family: Noto Sans;
+    font-weight: 400;
+}
+
+.Group2 {
+    width: 847.92px;
+    height: 725px;
+    left: 756px;
+    top: 178px;
+    position: absolute;
+}
+
+.Rectangle10 {
+    width: 817.82px;
+    height: 699.08px;
+    left: 30.10px;
+    top: 25.92px;
+    position: absolute;
+    background: #656565;
+}
+
+.Rectangle4 {
+    width: 817.82px;
+    height: 699.08px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: white;
+}
+
+.InputEmail {
+    width: 691.55px;
+    height: 61.88px;
+    left: 63px;
+    top: 277.78px;
+    position: absolute;
+    background: #F8F8F8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+    border-bottom: 3px #B1C1FA solid;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.Email {
+    width: 116.23px;
+    height: 31.78px;
+    left: 64.67px;
+    top: 246px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.FindButton {
+    width: 560px;
+    height: 77px;
+    left: 123px;
+    top: 460px;
+    position: absolute;
+    text-align: center;
+    background: #B1C1FA;
+    color: black;
+    font-size: 28px;
+    font-family: Inter;
+    font-weight: 400;
+    border-radius: 90px;
+}
+
+.Find {
+    width: 560px;
+    height: 77px;
+    left: 123px;
+    top: 460px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 28px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.WhatIsYourAccount {
+    width: 685.70px;
+    height: 138.81px;
+    left: 70px;
+    top: 107px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 36px;
+    font-family: Noto Sans;
+    font-weight: 100;
+    word-wrap: break-word;
+}
+
+.FindYourPassword {
+    width: 685.70px;
+    height: 138.81px;
+    left: 70.73px;
+    top: 38px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 64px;
+    font-family: Noto Sans;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.background {
+    background-image: url("/images/background.jpeg"); /* 배경 이미지 URL을 여기에 입력 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh; 
+}
