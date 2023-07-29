@@ -29,7 +29,7 @@
     </nav>
 </template>
 
-<style>
+<style scoped>
     nav {
         margin: 0;
         padding: 0;
@@ -37,13 +37,10 @@
     .mobile-navbar-item {
         display: none;
     }
-    .navbar-memberinfo:hover > p:first-child {
+    .navbar-memberinfo > p:first-child:hover, p:nth-child(3):hover {
         color: rgb(147, 147, 255)
     }
-    .navbar-memberinfo:hover > p:nth-child(3) {
-        color: rgb(147, 147, 255)
-    }
-    @media screen and (max-width: 960px) {
+    @media screen and (max-width: 960px) { /* grid가 최소 960px을 요구하기에 모바일과 대응 별개로 진행 */
         p {
             font-size: 11pt;
         }
@@ -70,7 +67,7 @@
         }
         .navbar-memberinfo {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
         }
         .burger-bar {
             width: 30px;
