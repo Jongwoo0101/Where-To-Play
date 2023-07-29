@@ -5,15 +5,15 @@
             <p>logo</p>
         </div>
         <div class="navbar-item">
-            <p>메인</p>
-            <p>운동장 찾기</p>
-            <p>운동장 등록</p>
-            <p>테마 지도</p>
+            <router-link to="/"><p class="link">메인</p></router-link>
+            <router-link to="/"><p class="link">운동장 찾기</p></router-link>
+            <router-link to="/"><p class="link">운동장 등록</p></router-link>
+            <router-link to="/"><p class="link">테마 지도</p></router-link>
         </div>
         <div class="navbar-memberinfo">
-            <p class="login">로그인</p>
+            <router-link to="/login"><p class="login link">로그인</p></router-link>
             <p>|</p>
-            <p class="signin">회원가입</p>
+            <router-link to="/register"><p class="signin link">회원가입</p></router-link>
             <div class="burger-menu" :class="{ active: isShown, toggle: isActive}" @click="toggle()">
                 <div class="burger-bar" :class="{ toggle: isActive }"></div>
                 <div class="burger-bar" :class="{ toggle: isActive }"></div>
@@ -22,14 +22,19 @@
         </div>
     </div>
     <div class="mobile-navbar-item" :class="{ toggle: isActive }">
-        <p>운동장 찾기</p>
-        <p>운동장 등록</p>
-        <p>테마 지도</p>
+        <router-link to="/"><p class="link">운동장 찾기</p></router-link>
+        <router-link to="/"><p class="link">운동장 등록</p></router-link>
+        <router-link to="/"><p class="link">테마 지도</p></router-link>
     </div>
     </nav>
 </template>
 
 <style scoped>
+    a {
+        color: #2c3e50;
+        text-decoration: none;
+        text-decoration-color: none;
+    }
     nav {
         margin: 0;
         padding: 0;
@@ -37,7 +42,7 @@
     .mobile-navbar-item {
         display: none;
     }
-    .navbar-memberinfo > p:first-child:hover, p:nth-child(3):hover {
+    p.link:hover {
         color: rgb(147, 147, 255)
     }
     @media screen and (max-width: 960px) { /* grid가 최소 960px을 요구하기에 모바일과 대응 별개로 진행 */
@@ -61,6 +66,7 @@
         }
         .burger-menu {
             margin: auto;
+            padding-left: 10px;
             width: 30px;
             height: 30px;
         }
@@ -83,7 +89,7 @@
         }
         .mobile-navbar-item.toggle {
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
         }
         .mobile-navbar-item.toggle > p {
             display: inline;
@@ -112,14 +118,14 @@
     @media screen and (min-width: 960px) {
         .navbar {
             display: grid;
-            grid-template-columns: 1fr 6fr 1fr;
+            grid-template-columns: 1fr 10fr 2fr;
         }
         .logo {
             margin: auto;
         }
         .navbar-item {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(9, 1fr);
         }
         .navbar-item > p, .navbar-memberinfo > p {
             display: inline;
@@ -130,6 +136,7 @@
         .navbar-memberinfo {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            margin-right: 3vw;
         }
         .navbar-memberinfo > p:nth-child(2) {
             padding: 4.5px;
