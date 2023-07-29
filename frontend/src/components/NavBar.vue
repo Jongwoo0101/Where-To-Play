@@ -58,7 +58,6 @@
         }
         .navbar-memberinfo > p {
             display: inline;
-            padding-left: 20px;
         }
         .burger-menu {
             margin: auto;
@@ -88,10 +87,10 @@
         }
         .mobile-navbar-item.toggle > p {
             display: inline;
-            margin-left: 15px;
-            margin-right: 15px;
-            margin-top: 0px;
-            margin-bottom: 0px;
+            margin-left: 5vw;
+            margin-right: 5vw;
+            margin-top: 0;
+            margin-bottom: 0;
         }
         @keyframes blacktoblue {
             from {
