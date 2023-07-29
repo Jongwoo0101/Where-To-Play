@@ -1,5 +1,6 @@
 <template>
-    <div class="navbar">
+    <nav>
+        <div class="navbar">
         <div class="logo">
             <p>logo</p>
         </div>
@@ -10,8 +11,9 @@
             <p>테마 지도</p>
         </div>
         <div class="navbar-memberinfo">
-            <p>로그인</p>
-            <p>회원가입</p>
+            <p class="login">로그인</p>
+            <p>|</p>
+            <p class="signin">회원가입</p>
             <div class="burger-menu" :class="{ active: isShown, toggle: isActive}" @click="toggle()">
                 <div class="burger-bar" :class="{ toggle: isActive }"></div>
                 <div class="burger-bar" :class="{ toggle: isActive }"></div>
@@ -19,14 +21,39 @@
             </div>
         </div>
     </div>
+    <div class="mobile-navbar-item" :class="{ toggle: isActive }">
+        <p>운동장 찾기</p>
+        <p>운동장 등록</p>
+        <p>테마 지도</p>
+    </div>
+    </nav>
 </template>
 
 <style>
+    nav {
+        margin: 0;
+        padding: 0;
+    }
+    .mobile-navbar-item {
+        display: none;
+    }
+    .navbar-memberinfo:hover > p:first-child {
+        color: rgb(147, 147, 255)
+    }
+    .navbar-memberinfo:hover > p:nth-child(3) {
+        color: rgb(147, 147, 255)
+    }
     @media screen and (max-width: 960px) {
+        p {
+            font-size: 11pt;
+        }
         .navbar > .navbar-item {display: none;}
         .navbar {
             display: flex;
             justify-content: space-between;
+        }
+        .navbar-item.toggle > p:first-child {
+            display: none;
         }
         .logo > p {
             margin-top: 15px;
@@ -48,20 +75,41 @@
         .burger-bar {
             width: 30px;
             height: 3px;
+            border-radius: 0.5px;
+            box-shadow: 1px 1px rgb(171, 171, 171);
+            animation: 0.5s bluetoblack;
             background-color: black;
             margin-top: 5px;
         }
         .burger-bar.toggle {
-            
+            animation: 0.5s blacktoblue;
+            background-color: rgb(111, 111, 255);
         }
-        @keyframes slidein {
+        .mobile-navbar-item.toggle {
+            display: flex;
+            justify-content: center;
+        }
+        .mobile-navbar-item.toggle > p {
+            display: inline;
+            margin-left: 15px;
+            margin-right: 15px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        @keyframes blacktoblue {
             from {
                 background-color: black;
-                margin-top: 5px;
             }
             to {
-                background-color: red;
-                margin-top: 5px;
+                background-color: rgb(111, 111, 255);
+            }
+        }
+        @keyframes bluetoblack {
+            from {
+                background-color: rgb(111, 111, 255);
+            }
+            to {
+                background-color: black;
             }
         }
     }
@@ -85,7 +133,11 @@
         }
         .navbar-memberinfo {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .navbar-memberinfo > p:nth-child(2) {
+            padding: 4.5px;
+            text-shadow: 0.1px black;
         }
     }
 </style>
