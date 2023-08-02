@@ -245,7 +245,7 @@ body {
 }
 
 .background {
-    background-image: url("/images/background.jpeg"); /* 배경 이미지 URL을 여기에 입력 */
+    background-image: url("../../images/background.jpeg"); /* 배경 이미지 URL을 여기에 입력 */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
