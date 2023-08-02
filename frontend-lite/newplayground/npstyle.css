@@ -1,0 +1,491 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.Rectangle1 {
+  width: 693px;
+  height: 2235px;
+  left: 46px;
+  top: 83px;
+  position: absolute;
+  background: #707070;
+  border-top-left-radius: 90px;
+  border-top-right-radius: 90px;
+}
+
+.Rectangle2 {
+  width: 693px;
+  height: 2275px;
+  left: 1px;
+  top: 1px;
+  position: absolute;
+  background: white;
+  border-top-left-radius: 90px;
+  border-top-right-radius: 90px;
+}
+
+.Rectangle3 {
+  width: 693px;
+  height: 123px;
+  left: 1px;
+  top: 1px;
+  position: absolute;
+  background: white;
+  border-top-left-radius: 90px;
+}
+
+.Rectangle4 {
+  width: 601px;
+  height: 93px;
+  left: 46px;
+  top: 1962px;
+  position: absolute;
+  background: white;
+  border-top: 0.50px #C3C3C3 solid;
+  border-bottom: 0.50px #C3C3C3 solid;
+}
+
+.Rectangle5 {
+    width: 601px; 
+    height: 93px; 
+    left: 46px; 
+    top: 1869px; 
+    position: absolute; 
+    background: white; 
+    border-top: 0.50px #C3C3C3 solid;
+}
+
+.Rectangle6 {
+    width: 601px; 
+    height: 93px; 
+    left: 46px; 
+    top: 1776px; 
+    position: absolute; 
+    background: white; 
+    border-top: 0.50px #C3C3C3 solid;
+}
+
+.Rectangle7 {
+    width: 601px; 
+    height: 93px; 
+    left: 46px; 
+    top: 1664px; 
+    position: absolute; 
+    background: #F8F8F8; 
+    border: 0.50px #C3C3C3 solid;
+}
+
+.verify {
+  width: 601px;
+  height: 93px;
+  left: 46px;
+  top: 1700px;
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.three {
+  width: 600px;
+  height: 96px;
+  left: 47px;
+  top: 1561px;
+  position: absolute;
+  color: #939393;
+  font-size: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.check {
+  width: 561px;
+  height: 35px;
+  left: 86px;
+  top: 1508px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Rectangle8 {
+  width: 35px;
+  height: 35px;
+  left: 47px;
+  top: 1508px;
+  position: absolute;
+  background: white;
+  border-radius: 5px;
+  border: 0.50px black solid;
+}
+
+.Rectangle9 {
+  width: 601px;
+  height: 62px;
+  left: 47px;
+  top: 1373px;
+  position: absolute;
+  background: #F8F8F8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  border-bottom: 3px #B1C1FA solid;
+}
+
+.explain {
+  width: 146px;
+  height: 35px;
+  left: 47px;
+  top: 1338px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-family: Noto Sans KR;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+
+.Rectangle10 {
+  width: 601px;
+  height: 62px;
+  left: 46px;
+  top: 1241px;
+  position: absolute;
+  background: #F8F8F8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  border-bottom: 3px #B1C1FA solid;
+}
+
+.time {
+  width: 146px;
+  height: 35px;
+  left: 46px;
+  top: 1206px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-family: Noto Sans KR;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Rectangle11 {
+  width: 601px;
+  height: 62px;
+  left: 46px;
+  top: 1109px;
+  position: absolute;
+  background: #F8F8F8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  border-bottom: 3px #B1C1FA solid;
+}
+
+.home {
+  width: 146px;
+  height: 35px;
+  left: 46px;
+  top: 1074px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-family: Noto Sans KR;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Rectangle12 {
+  width: 601px;
+  height: 62px;
+  left: 46px;
+  top: 766px;
+  position: absolute;
+  background: #F8F8F8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  border-bottom: 3px #B1C1FA solid;
+}
+
+.Rectangle13 {
+  width: 601px;
+  height: 62px;
+  left: 46px;
+  top: 845px;
+  position: absolute;
+  background: #F8F8F8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  border-bottom: 3px #B1C1FA solid;
+}
+
+.location {
+  width: 146px;
+  height: 35px;
+  left: 46px;
+  top: 731px;
+  position: absolute;
+}
+
+.Rectangle14 {
+  width: 601px;
+  height: 62px;
+  left: 46px;
+  top: 977px;
+  position: absolute;
+  background: #F8F8F8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  border-bottom: 3px #B1C1FA solid;
+}
+
+.phone {
+  width: 146px;
+  height: 35px;
+  left: 46px;
+  top: 942px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-family: Noto Sans KR;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Rectangle15 {
+  width: 601px;
+  height: 62px;
+  left: 46px;
+  top: 634px;
+  position: absolute;
+  background: #F8F8F8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  border-bottom: 3px #B1C1FA solid;
+}
+
+.placename {
+  width: 146px;
+  height: 35px;
+  left: 46px;
+  top: 599px;
+  position: absolute;
+}
+
+.Rectangle16 {
+  width: 601px;
+  height: 338px;
+  left: 46px;
+  top: 214px;
+  position: absolute;
+  background: #D9D9D9;
+  box-shadow: 4px 4px 4px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+.Rectangle17input {
+    width: 176px;
+    height: 50px;
+    left: 255px;
+    top: 436px;
+    position: absolute;
+    background: #B1C1FA;
+    border-radius: 90px;
+}
+
+
+.CameraIcon1329371 {
+  width: 42px;
+  height: 42px;
+  left: 264px;
+  top: 438px;
+  position: absolute;
+}
+
+.letaddpic {
+  width: 401px;
+  height: 108px;
+  left: 147px;
+  top: 265px;
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-size: 32px;
+  font-family: Noto Sans;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+
+.whereishere {
+  width: 503px;
+  height: 94px;
+  left: 95px;
+  top: 312px;
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-size: 24px;
+  font-family: Noto Sans KR;
+  font-weight: 100;
+  word-wrap: break-word;
+}
+
+.Rectangle18 {
+  width: 693px;
+  height: 46px;
+  left: 1px;
+  top: 124px;
+  position: absolute;
+  opacity: 0.40;
+  background: #B1C1FA;
+}
+
+.dontknowwhere {
+  width: 694px;
+  height: 42px;
+  left: 0px;
+  top: 135px;
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-size: 24px;
+  font-family: Noto Sans;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+.addplayground {
+  width: 401px;
+  height: 65px;
+  left: 147px;
+  top: 30px;
+  position: absolute;
+  text-align: center;
+  color: black;
+  font-size: 36px;
+  font-family: Noto Sans;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Save {
+  width: 154px;
+  height: 40px;
+  left: 540px;
+  top: 30px;
+  position: absolute;
+  text-align: center;
+  color: #0087FF;
+  font-size: 24px;
+  font-family: Noto Sans;
+  font-weight: 100;
+  word-wrap: break-word;
+}
+
+.Cancel {
+  width: 159px;
+  height: 40px;
+  left: 0px;
+  top: 30px;
+  position: absolute;
+  text-align: center;
+  color: #0087FF;
+  font-size: 24px;
+  font-family: Noto Sans;
+  font-weight: 100;
+  word-wrap: break-word;
+}
+
+
+.WhereToPlay {
+  width: 584px;
+  height: 127px;
+  left: 46px;
+  top: 2087px;
+  position: absolute;
+  color: #6C6C6C;
+  font-size: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+
+.maxthree {
+  width: 499px;
+  height: 93px;
+  left: 148px;
+  top: 2000px;
+  position: absolute;
+  color: black;
+  font-size: 20px;
+  font-family: Noto Sans KR;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.email {
+  width: 499px;
+  height: 93px;
+  left: 148px;
+  top: 1900px;
+  position: absolute;
+  color: black;
+  font-size: 20px;
+  font-family: Noto Sans KR;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.questions {
+  width: 499px;
+  height: 93px;
+  left: 148px;
+  top: 1800px;
+  position: absolute;
+  color: black;
+  font-size: 20px;
+  font-family: Noto Sans KR;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.hold {
+  width: 79px;
+  height: 93px;
+  left: 47px;
+  top: 2000px;
+  position: absolute;
+  color: #6C6C6C;
+  font-size: 20px;
+  font-family: Noto Sans KR;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.content {
+  width: 40px;
+  height: 101px;
+  left: 47px;
+  top: 1900px;
+  position: absolute;
+  color: #6C6C6C;
+  font-size: 20px;
+  font-family: Noto Sans KR;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.goal {
+  width: 40px;
+  height: 93px;
+  left: 47px;
+  top: 1800px;
+  position: absolute;
+  color: #6C6C6C;
+  font-size: 20px;
+  font-family: Noto Sans KR;
+  font-weight: 400;
+  word-wrap: break-word;
+}
