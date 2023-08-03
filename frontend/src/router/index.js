@@ -31,7 +31,12 @@ const routes = [
     path: '/login',
     name: 'login',
     component: require('@/views/Login.vue').default
-  }
+  },
+  {
+    path: '/addplace',
+    name: 'addplace',
+    component: require('@/views/AddPlace.vue').default
+  },
 ]
 
 const router = createRouter({

@@ -5,9 +5,8 @@
 
 <style scoped>
   #map {
-    margin: auto;
-    width: 80vw;
-    height: 80vh;
+    width: 65vw;
+    height: 90vh;
   }
 </style>
 
@@ -25,6 +24,7 @@
       return {
         map: null,
         location: null,
+        mode: null
       };
     },
     methods: {
