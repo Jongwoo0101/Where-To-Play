@@ -29,7 +29,7 @@ def user_login(request):
 
         if user:
             token, _ = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key}, status=status.HTTP_200_OK)
+            return Response({'token': token.key, 'username': username}, status=status.HTTP_200_OK)
 
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
@@ -43,7 +43,7 @@ def user_logout(request):
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-@api_view(['POST']) # 회원가입
+@api_view(['POST', 'GET']) # 회원가입
 def register_user(request):
     if request.method == 'POST':
         serializer = UserSerializer(data=request.data)
@@ -51,3 +51,7 @@ def register_user(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        user = CustomUser.objects.all()
+        serializer = UserSerializer(user, many=True)
+        return Response(serializer.data)
