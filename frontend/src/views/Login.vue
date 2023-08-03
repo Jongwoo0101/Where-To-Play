@@ -1,8 +1,9 @@
 <template>
     <div class="form">
-        <input type="text" class="input" required>
+        <input type="text" class="id" required>
         <label class="user-id">ID 또는 Email</label>
-        <input type="password" v-model="pw" placeholder="PW" required>
+        <input type="password" class="pw" v-model="pw" required>
+        <label class="user-pw">비밀번호</label>
         <button @click="submit">Login</button>
     </div>
 </template>
@@ -12,7 +13,7 @@
     position: relative;
 }
 
-.input {
+.id {
     border: solid 1.5px #000000;
     border-radius: 1rem;
     background: none;
@@ -31,18 +32,49 @@
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.input:focus, input:valid {
+.id:focus, id:valid {
     outline: none;
     border: 1.5px solid #1a73e8;
 }
 
-.input:focus ~ label, input:valid ~ label {
+.id:focus ~ .user-id, id:valid ~ .user-id {
     transform: translateY(-50%) scale(0.8);
     background-color: #FFFFFF;
     padding: 0.2em;
     color: #2196f3;
 }
 
+.pw {
+    border: solid 1.5px #000000;
+    border-radius: 1rem;
+    background: none;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #000000;
+    transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-pw {
+    position: absolute;
+    left: 15px;
+    top: 3.5rem;
+    color: #000000;
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pw:focus, pw:valid {
+    outline: none;
+    border: 1.5px solid #1a73e8;
+}
+
+.pw:focus ~ .user-pw, pw:valid ~ .user-pw {
+    transform: translateY(-50%) scale(0.8);
+    background-color: #FFFFFF;
+    padding: 0.2em;
+    color: #2196f3;
+}
 </style>
 
 <script>
