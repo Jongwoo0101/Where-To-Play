@@ -1,6 +1,6 @@
 <template>
     <div class="form">
-        <input type="text" class="id" required>
+        <input type="text" class="id" v-model="id" required>
         <label class="user-id">ID 또는 Email</label>
         <input type="password" class="pw" v-model="pw" required>
         <label class="user-pw">비밀번호</label>
