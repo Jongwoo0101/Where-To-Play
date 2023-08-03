@@ -2,18 +2,21 @@
     <nav>
         <div class="navbar">
         <div class="logo">
-            <p>logo</p>
+            <router-link to="/"><p>logo</p></router-link>
         </div>
         <div class="navbar-item">
             <router-link to="/"><p class="link">메인</p></router-link>
-            <router-link to="/"><p class="link">운동장 찾기</p></router-link>
-            <router-link to="/"><p class="link">운동장 등록</p></router-link>
-            <router-link to="/"><p class="link">테마 지도</p></router-link>
+            <router-link to="/findplace"><p class="link">운동장 찾기</p></router-link>
+            <router-link to="/addplace"><p class="link">운동장 등록</p></router-link>
+            <router-link to="/thememap"><p class="link">테마 지도</p></router-link>
         </div>
         <div class="navbar-memberinfo">
-            <router-link to="/login"><p class="login link">로그인</p></router-link>
-            <p>|</p>
-            <router-link to="/register"><p class="signin link">회원가입</p></router-link>
+            <p v-if="isLoggedin">레벨 0,</p>
+            <p v-if="isLoggedin">{{ username }}</p>
+            <p class="link" v-if="isLoggedin" @click="logout()">로그아웃</p>
+            <router-link to="/login" v-if="!isLoggedin"><p v-if="!isLoggedin" class="login link">로그인</p></router-link>
+            <p class="division" v-if="!isLoggedin">|</p>
+            <router-link to="/signup" v-if="!isLoggedin"><p v-if="!isLoggedin" class="signin link">회원가입</p></router-link>
             <div class="burger-menu" :class="{ active: isShown, toggle: isActive}" @click="toggle()">
                 <div class="burger-bar" :class="{ toggle: isActive }"></div>
                 <div class="burger-bar" :class="{ toggle: isActive }"></div>
@@ -22,9 +25,9 @@
         </div>
     </div>
     <div class="mobile-navbar-item" :class="{ toggle: isActive }">
-        <router-link to="/"><p class="link">운동장 찾기</p></router-link>
-        <router-link to="/"><p class="link">운동장 등록</p></router-link>
-        <router-link to="/"><p class="link">테마 지도</p></router-link>
+        <router-link to="/findplace"><p class="link">운동장 찾기</p></router-link>
+        <router-link to="/addplace"><p class="link">운동장 등록</p></router-link>
+        <router-link to="/thememap"><p class="link">테마 지도</p></router-link>
     </div>
     </nav>
 </template>
@@ -61,9 +64,6 @@
             margin-top: 15px;
             margin-bottom: 15px;
         }
-        .navbar-memberinfo > p {
-            display: inline;
-        }
         .burger-menu {
             margin: auto;
             padding-left: 10px;
@@ -73,6 +73,13 @@
         .navbar-memberinfo {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+        }
+        .navbar-memberinfo > p {
+            display: inline;
+        }
+        .navbar-memberinfo > p.division {
+            padding: 0.5px;
+            text-shadow: 0.1px black;
         }
         .burger-bar {
             width: 30px;
@@ -138,7 +145,7 @@
             grid-template-columns: repeat(3, 1fr);
             margin-right: 3vw;
         }
-        .navbar-memberinfo > p:nth-child(2) {
+        .navbar-memberinfo > p.division {
             padding: 4.5px;
             text-shadow: 0.1px black;
         }
@@ -150,17 +157,33 @@
         name: "NavBar",
         data() {
             return {
+                isLoggedin: false,
                 isActive: false,
-                isShown: false
+                isShown: false,
+                username: '',
             }
         },
+        updated() {
+            this.checkLogin()
+        },
+        mounted() {
+            this.checkLogin()
+        },
         created() {
+            this.checkLogin()
             window.addEventListener("resize", this.showMenu);
         },
         destroyed() {
             window.removeEventListener("resize", this.showMenu);
         },
         methods:{
+            checkLogin() {
+                if (sessionStorage.getItem("userToken") != null) {
+                    this.isLoggedin = true;
+                    this.username = sessionStorage.getItem('username')
+                } else
+                    this.isLoggedin = false;
+            },
             toggle() {
                 this.isActive = !this.isActive
             },
@@ -168,6 +191,11 @@
                 if (window.innerWidth <= 960) {
                     this.isShown = true;
                 }
+            },
+            logout() {
+                sessionStorage.removeItem('userToken');
+                sessionStorage.removeItem('username');
+                this.$forceUpdate();
             }
         }
     }
