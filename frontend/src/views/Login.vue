@@ -52,12 +52,13 @@
     font-size: 1rem;
     color: #000000;
     transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 2rem;
 }
 
 .user-pw {
     position: absolute;
     left: 15px;
-    top: 3.5rem;
+    top: 5.5rem;
     color: #000000;
     pointer-events: none;
     transform: translateY(1rem);
