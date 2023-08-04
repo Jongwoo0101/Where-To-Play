@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import PlaceInfo
 
 class PlaceInfoSerializer(serializers.ModelSerializer):
+    image = serializers.ImageField(allow_empty_file=True, required=False)
     class Meta:
         model = PlaceInfo
         fields = [
@@ -32,4 +33,5 @@ class PlaceInfoSerializer(serializers.ModelSerializer):
             time=validated_data['time'],
             description=validated_data['description'],
         )
+        place.save()
         return place
