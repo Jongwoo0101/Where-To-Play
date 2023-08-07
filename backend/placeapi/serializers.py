@@ -2,7 +2,15 @@ from rest_framework import serializers
 from .models import PlaceInfo
 
 class PlaceInfoSerializer(serializers.ModelSerializer):
-    image = serializers.ImageField(allow_empty_file=True, required=False)
+    image_url = serializers.SerializerMethodField('get_image_url')
+    image = serializers.ImageField(
+        allow_empty_file=True,
+        required=False,
+        use_url=True,
+        max_length=None
+        )
+    def get_image_url(self, obj):   
+        return obj.image.url
     class Meta:
         model = PlaceInfo
         fields = [
@@ -16,7 +24,8 @@ class PlaceInfoSerializer(serializers.ModelSerializer):
             'contact',
             'homepage',
             'time',
-            'description'
+            'description',
+            'image_url'
         ]
 
     def create(self, validated_data):

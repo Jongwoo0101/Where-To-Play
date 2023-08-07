@@ -5,8 +5,7 @@
 
 <style scoped>
   #map {
-    width: 65vw;
-    height: 90vh;
+    width: 100%;
   }
 </style>
 
@@ -35,7 +34,8 @@
           map: null,
           location: null,
           address: null,
-          geocoder: null
+          geocoder: null,
+          placeInfo: null,
         };
       },
       methods: {

@@ -14,7 +14,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
     .form {
         display: grid;
     }

@@ -17,11 +17,13 @@
 
 <style scoped>
     .container {
-        display: flex;
+        display:grid;
+        grid-template-columns: 4fr 1fr;
     }
     .placeform {
         display: grid;
         grid-template-rows: repeat(15, 1fr);
+        margin: 1vw;
     }
     .placeform > input[type=text],input[type=file],texarea {
         margin-top: 1vh;
@@ -65,7 +67,8 @@
                      (this.placeHomepage != null)&&
                      (this.placeLocation != null)&&
                      (this.placeName != null)&&
-                     (this.placeTime != null)
+                     (this.placeTime != null)&&
+                     (this.image != '')
                     )
                 {
                 console.log (this.image)

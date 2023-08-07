@@ -1,15 +1,23 @@
 <template>
-    <div class="form">
+    <div class="container">
+        <div class="form">
         <input type="text" class="id" v-model="id" required>
         <label class="user-id">ID 또는 Email</label>
         <input type="password" class="pw" v-model="pw" required>
         <label class="user-pw">비밀번호</label>
         <button @click="submit">Login</button>
+        </div>
     </div>
 </template>
 
-<style>
+<style scoped>
+.container {
+    display: flex;
+    justify-content: center;
+}
 .form {
+    width: 50%;
+    display: grid;
     position: relative;
 }
 
@@ -75,6 +83,21 @@
     background-color: #FFFFFF;
     padding: 0.2em;
     color: #2196f3;
+}
+
+button {
+    border: 0;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: background-color 0.5s;
+    background-color: azure;
+    margin: 1rem 0 0 0;
+}
+
+button:hover {
+    transition: background-color 0.5s;
+    background-color: #1a73e8;
 }
 </style>
 
