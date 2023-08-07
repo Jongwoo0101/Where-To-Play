@@ -16,12 +16,20 @@
 <style scoped>
     .container {
         display: grid;
-        grid-template-columns: 3fr 1fr;
         padding: 1vw;
     }
     .place-cards {
         margin: 0 0 0 1vw;
         display: block;
+    }
+    @media screen and (min-width: 960px) {
+        .container {
+            grid-template-columns: 3fr 1fr;
+        }
+
+    }
+    @media screen and (max-width: 960px) {
+        .container { grid-template-rows: 1fr 4fr; }
     }
 </style>
 

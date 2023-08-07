@@ -16,23 +16,65 @@
 </template>
 
 <style scoped>
-    .container {
-        display:grid;
-        grid-template-columns: 4fr 1fr;
-    }
-    .placeform {
-        display: grid;
-        grid-template-rows: repeat(15, 1fr);
-        margin: 1vw;
-    }
-    .placeform > input[type=text],input[type=file],texarea {
-        margin-top: 1vh;
+    .placeform > input[type=text],input[type=file],textarea {
         display: block;
+        margin: 1vh auto auto auto;
+    }
+    .container {
+        display: grid;
+    }
+    input,textarea {
+        border: solid 1.5px #000000;
+        border-radius: 1rem;
+        background: none;
+        padding: 1rem;
+        font-size: 1rem;
+        color: #000000;
+        transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    input:focus, textarea:focus {
+        outline: none;
+        border: 1.5px solid #1a73e8;
+    }
+    button {
+        border: 0;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 1rem;
+        transition: background-color 0.5s;
+        background-color: azure;
+        margin: 0;
+    }
+
+    button:hover {
+        transition: background-color 0.5s;
+        background-color: #1a73e8;
+    }
+    legend {
+        margin: auto;
+    }
+    @media screen and (min-width: 960px) {
+        .container {
+            grid-template-columns: 4fr 1fr;
+        }
+        .placeform {
+            display: grid;
+            grid-template-rows: repeat(9, 1fr);
+            margin: 1vw;
+        }
+    }
+    @media screen and (max-width: 960px) {
+        .container {
+            grid-template-rows: 1fr 1fr;
+        }
+        .placeform {
+            margin: auto;
+        }
     }
 </style>
 
 <script>
     import Map from '@/components/Map.vue';
+import router from '@/router';
     import axios from 'axios'
     export default {
         name: "AddPlace",
@@ -93,9 +135,13 @@
                 })
                 .then(res => {
                     console.log(res)
+                    alert("등록이 완료되었습니다!")
+                    router.push('/')
                 })
                 .catch(e => {
                     console.log(e)
+                    if (e.message == "Request failed with status code 401") alert('에러: 장소 등록을 위해선 로그인이 필요합니다.')
+                    else alert("오류가 발생했습니다.")
                 })
             } else {
                 alert("모든 정보를 다 입력해주세요!")

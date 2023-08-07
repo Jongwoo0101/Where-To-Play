@@ -6,13 +6,14 @@
 <style scoped>
   #map {
     width: 100%;
+    height: 100%;
   }
 </style>
 
 <script>
+  import axios from 'axios'
     export default {  
       name: 'Map',
-
       updated(){
         if (window.kakao && window.kakao.maps) {
           this.loadMap()
@@ -54,6 +55,30 @@
           };
           this.map = new kakao.maps.Map(container, options)
           this.geocoder = new kakao.maps.services.Geocoder();
+          axios.get("http://localhost:8000/place/getplace/")
+          .then((response) => {
+          for (let i = 0; i < response.data.length; i++) {
+            let position = new kakao.maps.LatLng(response.data[i].lat, response.data[i].lng);
+            let marker = new kakao.maps.Marker({
+              position: position,
+              clickable: true
+            });
+            marker.setMap(this.map);
+            let content = '<p style="padding: 5px;">'+ response.data[i].name +' / '+ response.data[i].description+'</p>';
+
+            let cWindow = new kakao.maps.InfoWindow({
+              content : content,
+              removable : true
+            });
+            kakao.maps.event.addListener(marker, 'click', () => {
+            cWindow.open(this.map, marker);
+            })
+          }
+        })
+        .catch((err) => {
+          alert("장소 정보들을 불러오는데 실패했습니다.")
+          console.log(err)
+        })
         },
         clickEvent(mouseEvent) { // 마우스 클릭 시 좌표를 가져오기 위한 함수
           let latlng = mouseEvent.latLng;
