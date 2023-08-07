@@ -2,6 +2,7 @@
     <div class="container">
         <Map @place="getInfo"/>
         <div class="placeform">
+            <p>장소 등록</p>
             <input @change="uploadImage" type="file" accept="image/*">
             <input v-model="placeName" type="text" placeholder="장소명(필수)">
             <input v-model="placeAddress" type="text" placeholder="위치">
@@ -16,6 +17,11 @@
 </template>
 
 <style scoped>
+    p {
+        font-weight: 700;
+        font-size: 16pt;
+        text-align: center;
+    }
     .placeform > input[type=text],input[type=file],textarea {
         display: block;
         margin: 1vh auto auto auto;
@@ -58,7 +64,7 @@
         }
         .placeform {
             display: grid;
-            grid-template-rows: repeat(9, 1fr);
+            grid-template-rows: repeat(10, 1fr);
             margin: 1vw;
         }
     }
@@ -74,7 +80,7 @@
 
 <script>
     import Map from '@/components/Map.vue';
-import router from '@/router';
+    import router from '@/router';
     import axios from 'axios'
     export default {
         name: "AddPlace",

@@ -37,6 +37,8 @@
           address: null,
           geocoder: null,
           placeInfo: null,
+          infoWindow: null,
+          markers: [],
         };
       },
       methods: {
@@ -57,22 +59,26 @@
           this.geocoder = new kakao.maps.services.Geocoder();
           axios.get("http://localhost:8000/place/getplace/")
           .then((response) => {
+            response.data.forEach((response) => {
+              response.data
+            });
           for (let i = 0; i < response.data.length; i++) {
             let position = new kakao.maps.LatLng(response.data[i].lat, response.data[i].lng);
             let marker = new kakao.maps.Marker({
-              position: position,
-              clickable: true
+              map: this.map,
+              position: position
             });
-            marker.setMap(this.map);
             let content = '<p style="padding: 5px;">'+ response.data[i].name +' / '+ response.data[i].description+'</p>';
 
-            let cWindow = new kakao.maps.InfoWindow({
+            let infoWindow = new kakao.maps.InfoWindow({
               content : content,
-              removable : true
             });
-            kakao.maps.event.addListener(marker, 'click', () => {
-            cWindow.open(this.map, marker);
-            })
+            kakao.maps.event.addListener(marker, 'mouseover', () => {
+              infoWindow.open(this.map, marker);
+            });
+            kakao.maps.event.addListener(marker, 'mouseout', () => {
+              infoWindow.close();
+            });
           }
         })
         .catch((err) => {
@@ -97,7 +103,7 @@
         sendData() { // 상위 컴포넌트인 AddPlace에서 위치 활용하기 위한 함수
           if (this.address != null) 
             this.$emit('place', [this.location, this.address])
-        }
+        },
       }
     }
 </script>
