@@ -3,9 +3,10 @@
         <Map @place="getInfo"/>
         <div class="placeform">
             <p>장소 등록</p>
-            <input @change="uploadImage" type="file" accept="image/*">
+            <label for="file">사진 선택</label>
+            <input @change="uploadImage" id="file" type="file" accept="image/*">
             <input v-model="placeName" type="text" placeholder="장소명(필수)">
-            <input v-model="placeAddress" type="text" placeholder="위치">
+            <input v-model="placeAddress" type="text" placeholder="위치" disabled>
             <input v-model="placeContact" type="text" placeholder="연락처">
             <input v-model="placeHomepage" type="text" placeholder="홈페이지">
             <input v-model="placeTime" type="text" placeholder="운영시간">
@@ -17,12 +18,40 @@
 </template>
 
 <style scoped>
+    .placeform {
+        height: 95vh;
+        overflow: scroll;
+    }
     p {
         font-weight: 700;
         font-size: 16pt;
         text-align: center;
+        margin: 0;
+        padding: 0;
+        height: fit-content;
     }
-    .placeform > input[type=text],input[type=file],textarea {
+    .file-form {
+        border: 3px solid #999999
+    }
+    label {
+        text-align: center;
+        margin: auto;
+        padding: 10px 50px 10px 50px;
+        border: solid 2px #999999;
+        border-radius: 5px;
+    }
+    label:hover {
+        border: solid 2px #1a73e8;
+    }
+    input[type="file"] {
+        position: absolute;
+        width: 0;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+    }
+    .placeform > input[type=text],textarea {
         display: block;
         margin: 1vh auto auto auto;
     }
@@ -48,7 +77,8 @@
         border-radius: 1rem;
         transition: background-color 0.5s;
         background-color: azure;
-        margin: 0;
+        margin: 10px;
+        padding: 15px;
     }
 
     button:hover {
@@ -64,8 +94,10 @@
         }
         .placeform {
             display: grid;
-            grid-template-rows: repeat(10, 1fr);
-            margin: 1vw;
+            height: 100vh;
+        }
+        .placeform > input[type="text"],input[type="file"] {
+            margin: 10px;
         }
     }
     @media screen and (max-width: 960px) {
@@ -74,6 +106,12 @@
         }
         .placeform {
             margin: auto;
+        }
+        p {
+            margin: 20px;
+        }
+        .placeform > input[type="text"],input[type="file"] {
+            margin: 20px;
         }
     }
 </style>

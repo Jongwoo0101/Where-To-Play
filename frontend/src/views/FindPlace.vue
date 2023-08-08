@@ -2,13 +2,16 @@
     <div class="container">
         <Map />
         <div class="place-cards">
-            <PlaceCard
-            v-for="data in placeInfo"
-            :placeImage="data.image"
-            :placeName="data.name"
-            :placeLocation="data.address"
-            :placeDescription="data.description"
-            />
+            <p>운동장 목록</p>
+            <div class="card-zone">
+                <PlaceCard
+                v-for="data in placeInfo"
+                :placeImage="data.image"
+                :placeName="data.name"
+                :placeLocation="data.address"
+                :placeDescription="data.description"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -19,17 +22,28 @@
         padding: 1vw;
     }
     .place-cards {
-        margin: 0 0 0 1vw;
+        margin: 0 0 0 0.5vh;
         display: block;
+    }
+    .card-zone > div {
+        margin: 10px auto 10px auto;
+    }
+    .card-zone {
+        height: 95vh;
+        overflow: scroll;
     }
     @media screen and (min-width: 960px) {
         .container {
             grid-template-columns: 3fr 1fr;
         }
-
     }
     @media screen and (max-width: 960px) {
         .container { grid-template-rows: 1fr 4fr; }
+    }
+    p {
+        font-weight: 700;
+        font-size: 18pt;
+        margin: 0 0 3vh 0;
     }
 </style>
 
