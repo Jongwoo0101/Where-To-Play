@@ -1,9 +1,9 @@
 <template>
     <div class="container">
         <div class="form">
-        <input type="text" class="id" v-model="id" required>
+        <input type="text" class="id" v-model="id" autofocus>
         <label class="user-id">ID 또는 Email</label>
-        <input type="password" class="pw" v-model="pw" required>
+        <input type="password" class="pw" v-model="pw">
         <label class="user-pw">비밀번호</label>
         <button @click="submit">Login</button>
         </div>
@@ -40,12 +40,12 @@
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.id:focus, id:valid {
+.id:focus, .id:valid {
     outline: none;
     border: 1.5px solid #1a73e8;
 }
 
-.id:focus ~ .user-id, id:valid ~ .user-id {
+.id:focus ~ .user-id, .id:valid ~ .user-id {
     transform: translateY(-50%) scale(0.8);
     background-color: #FFFFFF;
     padding: 0.2em;
@@ -73,12 +73,12 @@
     transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.pw:focus, pw:valid {
+.pw:focus, .pw:valid {
     outline: none;
     border: 1.5px solid #1a73e8;
 }
 
-.pw:focus ~ .user-pw, pw:valid ~ .user-pw {
+.pw:focus ~ .user-pw, .pw:valid ~ .user-pw {
     transform: translateY(-50%) scale(0.8);
     background-color: #FFFFFF;
     padding: 0.2em;
@@ -127,7 +127,7 @@ button:hover {
                     sessionStorage.setItem('userToken', response.data.token)
                     this.$router.push("/")
                 })
-                .catch( response => {console.log(response), alert("로그인 정보를 다시 확인하세요")})
+                .catch( response => { console.log(response), alert("로그인 정보를 다시 확인하세요")})
             },
         }
     }
