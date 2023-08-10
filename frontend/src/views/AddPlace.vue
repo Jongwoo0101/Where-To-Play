@@ -180,7 +180,6 @@
                 .then(res => {
                     console.log(res)
                     alert("등록이 완료되었습니다!")
-                    router.push('/')
                 })
                 .catch(e => {
                     console.log(e)

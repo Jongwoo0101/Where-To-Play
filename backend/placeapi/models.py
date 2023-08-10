@@ -30,6 +30,10 @@ class PlaceInfo(models.Model):
     homepage = models.TextField(null=True)
     time = models.CharField(max_length=100)
     description = models.TextField(null=True)
+    comments = models.ManyToManyField(PlaceComment, related_name="comments")
+    open_statuses = models.ManyToManyField(PlaceOpenStatus, related_name="open_statuses")
+    ratings = models.ManyToManyField(PlaceRating, related_name="ratings")
+    sub_images = models.ManyToManyField(PlaceImage, related_name="sub_images")
 
 class PlaceSubInfo(models.Model):
     place = models.ForeignKey('PlaceInfo', on_delete=models.CASCADE)
