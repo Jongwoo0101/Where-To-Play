@@ -172,8 +172,8 @@
                 formData.append('description', this.placeDescription)
                 formData.append('created_at', date)
                 formData.append('updated_at', date)
-                console.log(formData)
-                axios.post("http://localhost:8000/place/addplace/", 
+                formData.append('uploader', sessionStorage.getItem('nickname'))
+                axios.post("http://localhost:8000/place/add/", 
                     formData
                     ,{ headers: { 'Content-Type': 'multipart/form-data', Authorization: 'Token '+sessionStorage.getItem('userToken')}
                 })

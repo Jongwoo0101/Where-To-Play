@@ -12,7 +12,7 @@
 
 <script>
   import axios from 'axios'
-import { toRaw } from 'vue';
+  import { toRaw } from 'vue';
     export default {  
       name: 'Map',
       updated(){
@@ -26,7 +26,7 @@ import { toRaw } from 'vue';
       mounted() {
         if (window.kakao && window.kakao.maps) {
           this.loadMap()
-          kakao.maps.event.addListener(this.map, 'click', this.clickEvent);
+          kakao.maps.event.addListener(toRaw(this.map), 'click', this.clickEvent);
         } else {
           this.loadAPI()
         }
@@ -59,7 +59,7 @@ import { toRaw } from 'vue';
           this.map = new kakao.maps.Map(container, options)
           this.geocoder = new kakao.maps.services.Geocoder();
           
-          axios.get("http://localhost:8000/place/getplace/")
+          axios.get("http://localhost:8000/place/get/")
           .then((response) => {
             for (let i = 0; i < response.data.length; i++) {
               let position = new kakao.maps.LatLng(response.data[i].lat, response.data[i].lng);

@@ -1,9 +1,14 @@
 from django.urls import path
-from .views import add_place, get_place
+from .views import *
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('addplace/', add_place, name='add place'),
-    path('getplace/', get_place, name="get place")
+    path('add/', add_place, name='add place'),
+    path('get/', get_place, name="get place"),
+#    path('subinfo/', get_placesubinfo),
+    path('comment/', write_comment),
+    path('image/', post_image),
+    path('open_status/', write_status),
+    path('rating/', write_rating),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -123,7 +123,7 @@ button:hover {
                 })
                 .then( response => {
                     console.log(response.data)
-                    sessionStorage.setItem('username', response.data.username)
+                    sessionStorage.setItem('nickname', response.data.nickname.nickname)
                     sessionStorage.setItem('userToken', response.data.token)
                     this.$router.push("/")
                 })

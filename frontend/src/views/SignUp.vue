@@ -38,7 +38,8 @@
         methods: {
             submit() {
                 axios.post('http://localhost:8000/auth/register/', {
-                    "username": this.nickname,
+                    "username": this.id,
+                    "nickname": this.nickname,
                     "realname": this.name,
                     "email": this.email,
                     "password": this.password,

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import status
-from .models import PlaceInfo
-from .serializers import PlaceInfoSerializer
+from .models import *
+from .serializers import *
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from django.core.exceptions import ObjectDoesNotExist
@@ -28,4 +28,71 @@ def add_place(request):
             return Response({'errors': serializer.errors, 'data': request.data}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+
+@api_view(['GET', 'POST'])
+def write_comment(request):
+    if (request.method == 'POST'):
+        try:
+            serializer = PlaceCommentSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    elif (request.method == 'GET'):
+        model = PlaceComment.objects.all()
+        serializer = PlaceCommentSerializer(model, many=True)
+        return Response(serializer.data)
+
+@api_view(['GET', 'POST'])
+def post_image(request):
+    if(request.method == 'POST'):
+        try:
+            serializer = PlaceImageSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, content_type='multipart/form-data', status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    elif (request.method == 'GET'):
+        model = PlaceImage.objects.all()
+        serializer = PlaceImageSerializer(model, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET', 'POST'])
+def write_rating(request):
+    if (request.method == 'GET'):
+        model = PlaceRating.objects.all()
+        serializer = PlaceRatingSerializer(model, many=True)
+        return Response(serializer.data)
+    if (request.method == 'POST'):
+        try:
+            serializer = PlaceRatingSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    
+@api_view(['GET', 'POST'])
+def write_status(request):
+    if (request.method == "POST"):
+        try:
+            serializer = PlaceOpenStatusSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    elif (request.method == "GET"):
+        model = PlaceOpenStatus.objects.all()
+        serializer = PlaceOpenStatusSerializer(model, many=True)
+        return Response(serializer.data)
+
+# @api_view(['GET'])
+# def get_placesubinfo(request):
+#     model = PlaceSubInfo.objects.all()
+#     serializer = PlaceSubInfoSerializer(model, many=True)
+#     return Response(serializer.data)

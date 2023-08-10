@@ -27,9 +27,10 @@ def user_login(request):
         if not user:
             user = authenticate(username=username, password=password)
 
+        nickname = CustomUser.objects.filter(username=username).values('nickname')[0]
         if user:
             token, _ = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key, 'username': username}, status=status.HTTP_200_OK)
+            return Response({'token': token.key, 'nickname': nickname }, status=status.HTTP_200_OK)
 
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 

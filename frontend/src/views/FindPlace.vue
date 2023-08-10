@@ -63,7 +63,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:8000/place/getplace/')
+            axios.get('http://localhost:8000/place/get/')
             .then((res) => {
                 console.log(res.data)
                 this.placeInfo = res.data

@@ -10,9 +10,9 @@
             <router-link to="/addplace"><p class="link">운동장 등록</p></router-link>
             <router-link to="/thememap"><p class="link">테마 지도</p></router-link>
         </div>
-        <div class="navbar-memberinfo">
+        <div class="navbar-memberinfo" :class="{ loggedIn: isLoggedin }">
             <p v-if="isLoggedin">레벨 0,</p>
-            <p v-if="isLoggedin">{{ username }}</p>
+            <p v-if="isLoggedin">{{ nickname }}</p>
             <p class="link" v-if="isLoggedin" @click="logout()">로그아웃</p>
             <router-link to="/login" v-if="!isLoggedin"><p v-if="!isLoggedin" class="login link">로그인</p></router-link>
             <p class="division" v-if="!isLoggedin">|</p>
@@ -125,7 +125,7 @@
     @media screen and (min-width: 960px) {
         .navbar {
             display: grid;
-            grid-template-columns: 1fr 10fr 2fr;
+            grid-template-columns: 1fr 8fr 2fr;
         }
         .logo {
             margin: auto;
@@ -145,6 +145,13 @@
             grid-template-columns: repeat(3, 1fr);
             margin-right: 3vw;
         }
+        .navbar-memberinfo.loggedIn {
+            display: grid;
+            margin-right: 3vw;
+        }
+        .navbar-memberinfo.loggedIn > p {
+            margin-right: 5px;
+        }
         .navbar-memberinfo > p.division {
             padding: 4.5px;
             text-shadow: 0.1px black;
@@ -160,7 +167,7 @@
                 isLoggedin: false,
                 isActive: false,
                 isShown: false,
-                username: '',
+                nickname: '',
             }
         },
         updated() {
@@ -180,7 +187,7 @@
             checkLogin() {
                 if (sessionStorage.getItem("userToken") != null) {
                     this.isLoggedin = true;
-                    this.username = sessionStorage.getItem('username')
+                    this.nickname = sessionStorage.getItem('nickname')
                 } else
                     this.isLoggedin = false;
             },
