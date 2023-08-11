@@ -18,7 +18,7 @@ class PlaceImage(models.Model):
     image_uploaded_at = models.DateTimeField(auto_now_add=True)
 
 class PlaceInfo(models.Model):
-    image = models.ImageField(upload_to="placeinfo_image")
+    image = models.ImageField(upload_to="placeinfo_image", null=True)
     name = models.CharField(max_length=100)
     uploader = models.CharField(max_length=16)
     created_at = models.DateTimeField(null=True)
@@ -26,9 +26,9 @@ class PlaceInfo(models.Model):
     lat = models.CharField(max_length=100)
     lng = models.CharField(max_length=100)
     address = models.CharField(max_length=200)
-    contact = models.CharField(max_length=50)
+    contact = models.CharField(max_length=50, null=True)
     homepage = models.TextField(null=True)
-    time = models.CharField(max_length=100)
+    time = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True)
     comments = models.ManyToManyField(PlaceComment, related_name="comments")
     open_statuses = models.ManyToManyField(PlaceOpenStatus, related_name="open_statuses")

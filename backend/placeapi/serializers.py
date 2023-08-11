@@ -14,7 +14,8 @@ class PlaceImageSerializer(serializers.ModelSerializer):
     
     image = serializers.ImageField(
         use_url=True,
-        max_length=None
+        max_length=None,
+        allow_null=True
     )
 
     def create(self, validated_data):
@@ -51,8 +52,8 @@ class PlaceRatingSerializer(serializers.ModelSerializer):
 
 class PlaceInfoSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(
-        allow_empty_file=True,
         required=False,
+        allow_null=True,
         use_url=True,
         max_length=None
     )
@@ -85,8 +86,12 @@ class PlaceInfoSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
+        for field_name, value in validated_data.items():
+            if value is None and field_name != 'image':
+                validated_data[field_name] = '정보 없음'
+
         place = PlaceInfo(
-            image=validated_data['image'],
+            image=self.initial_data.get('image'),
             name=validated_data['name'],
             uploader=validated_data['uploader'],
             created_at=validated_data['created_at'],
