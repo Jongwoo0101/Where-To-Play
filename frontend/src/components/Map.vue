@@ -1,5 +1,6 @@
 <template>
     <div id="map">
+      <button class="refresh-btn" @click="refreshCurrentPos()">현위치 불러오기</button>
     </div>
 </template>
 
@@ -7,6 +8,19 @@
   #map {
     width: 100%;
     height: 100vh;
+  }
+  .refresh-btn {
+    position: relative;
+    right: 0;
+    margin: 5px 0 0 0;
+    width: 100px;
+    height: 45px;
+    z-index: 100;
+    border: 0;
+    background-color: #485fc7;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.3);
   }
 </style>
 
@@ -50,13 +64,30 @@
           document.head.appendChild(script);
         },
         loadMap() { // 맵을 그리는 함수 + 백엔드 서버에서 저장된 위치 정보들을 불러옴
+          var centerPos = new kakao.maps.LatLng(37.49533610932167, 127.05665437437267)
           const container = document.getElementById('map');
           const options = {
-            center: new kakao.maps.LatLng(37.49533610932167, 127.05665437437267),
-            level: 5,
+            center: centerPos,
+            level: 6,
             mapTypeId: kakao.maps.MapTypeId.HYBRID
           };
           this.map = new kakao.maps.Map(container, options)
+
+          if (navigator.geolocation && (localStorage.getItem('currentPos') == null)) {
+            navigator.geolocation.getCurrentPosition((pos) => {
+              localStorage.setItem('currentPos', [pos.coords.latitude, pos.coords.longitude])
+              let currentPos = localStorage.getItem('currentPos').split(',')
+              currentPos = new kakao.maps.LatLng(currentPos[0], currentPos[1])
+              this.map.panTo(currentPos)
+            })
+          } else if (localStorage.getItem('currentPos') != null) {
+            let currentPos = localStorage.getItem('currentPos').split(',')
+            currentPos = new kakao.maps.LatLng(currentPos[0], currentPos[1])
+            this.map.panTo(currentPos)
+          } else {
+            alert("[ERROR] 현재 위치를 불러올 수 없습니다.")
+          }
+          
           this.geocoder = new kakao.maps.services.Geocoder();
           
           axios.get("http://localhost:8000/place/get/")
@@ -109,6 +140,18 @@
             infowindow.close();
           };
         },
+        refreshCurrentPos() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((pos) => {
+              localStorage.setItem('currentPos', [pos.coords.latitude, pos.coords.longitude])
+              let currentPos = localStorage.getItem('currentPos').split(',')
+              currentPos = new kakao.maps.LatLng(currentPos[0], currentPos[1])
+              toRaw(this.map.panTo(currentPos))
+            })
+          } else {
+            alert("[ERROR] 현재 위치를 불러올 수 없습니다.")
+          }
+        }
       }
     }
 </script>

@@ -12,7 +12,7 @@
       <p>{{ placeDescription }}</p>
       <p class="place-details" v-if="placeDetail">
         연락처: {{ response.contact }}<br>
-        홈페이지: {{ response.homepage }}<br>
+        홈페이지: <a :href="response.homepage" target="_blank">Link</a><br>
         운영 시간: {{ response.time }}
       </p>
     </div>
@@ -42,14 +42,20 @@
       },
       methods: {
         click() {
-          axios
-          .get('http://localhost:8000/place/get/'+this.placeId+'/')
-          .then(res => {
-            this.placeDetail = true
-            console.log(res.data)
-            this.response = res.data
-          })
+          if (this.placeDetail === false) {
+            axios
+            .get('http://localhost:8000/place/get/'+this.placeId+'/')
+            .then(res => {
+              this.placeDetail = !this.placeDetail
+              console.log(res.data)
+              this.response = res.data
+              if (this.response.homepage.search("https://") != 0 && this.response.homepage.search("http://") != 0)
+                this.response.homepage = "//" + this.response.homepage
+            })
+          } else {
+            this.placeDetail = !this.placeDetail
+          }
         }
-      }  
+      }
     }
 </script>

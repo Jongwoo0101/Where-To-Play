@@ -2,7 +2,7 @@
     <nav>
         <div class="navbar">
         <div class="logo">
-            <router-link to="/"><p>logo</p></router-link>
+            <router-link to="/"><img class="logo" src="@/assets/wtp_logo.png"/></router-link>
         </div>
         <div class="navbar-item">
             <router-link to="/"><p class="link">메인</p></router-link>
@@ -33,10 +33,17 @@
 </template>
 
 <style scoped>
+    img.logo {
+        max-width: 100%;
+        height: 50px;
+    }
     a {
         color: #2c3e50;
         text-decoration: none;
         text-decoration-color: none;
+        margin: 0;
+        display: flex;
+        justify-content: center;
     }
     nav {
         margin: 0;
@@ -47,6 +54,9 @@
     }
     p.link:hover {
         color: rgb(147, 147, 255)
+    }
+    p.link {
+        margin: auto;
     }
     @media screen and (max-width: 960px) { /* grid가 최소 960px을 요구하기에 모바일과 대응 별개로 진행 */
         p {
@@ -150,7 +160,7 @@
             margin-right: 3vw;
         }
         .navbar-memberinfo.loggedIn > p {
-            margin-right: 5px;
+            margin-right: 0.23rem;
         }
         .navbar-memberinfo > p.division {
             padding: 4.5px;
