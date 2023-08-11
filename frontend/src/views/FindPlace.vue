@@ -6,6 +6,7 @@
             <div class="card-zone">
                 <PlaceCard
                 v-for="data in placeInfo"
+                :placeId="data.id"
                 :placeImage="data.image"
                 :placeName="data.name"
                 :placeLocation="data.address"
