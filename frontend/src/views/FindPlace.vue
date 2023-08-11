@@ -69,7 +69,10 @@
                 console.log(res.data)
                 this.placeInfo = res.data
             })
-            .catch((e) => { console.log(e) })
+            .catch((e) => {
+                console.log(e)
+                alert('장소 세부 정보를 불러오는 데 실패했습니다!')
+            })
         }
     }
 </script>

@@ -118,8 +118,8 @@
 
 <script>
     import Map from '@/components/Map.vue';
-    import router from '@/router';
-    import axios from 'axios'
+    import axios from 'axios';
+
     export default {
         name: "AddPlace",
         components: {
@@ -129,7 +129,7 @@
             return {
                 placeAddress: null,
                 placeLocation: null,
-                image: '',
+                image: null,
                 placeName: '',
                 placeContact: '',
                 placeHomepage: '',
@@ -148,20 +148,15 @@
             },
             submit() {
                 if ((this.placeAddress != null)&&
-                     (this.placeContact != null)&&
-                     (this.placeDescription != null)&&
-                     (this.placeHomepage != null)&&
                      (this.placeLocation != null)&&
-                     (this.placeName != null)&&
-                     (this.placeTime != null)&&
-                     (this.image != '')
+                     (this.placeName != null)
                     )
                 {
-                console.log (this.image)
                 let date = new Date().toJSON();
                 const position = this.placeLocation.split(', ');
                 const formData = new FormData()
-                formData.append('image', this.image.originalTarget.files[0])
+                if (this.image)
+                    formData.append('image', this.image.originalTarget.files[0])
                 formData.append('name', this.placeName)
                 formData.append('lat', position[0])
                 formData.append('lng', position[1])

@@ -2,7 +2,7 @@
 <div @click="click()" class="card" :id="placeId">
   <div class="card-image">
     <figure class="image is-4by3">
-      <img :src="'http://localhost:8000/'+placeImage" alt="Placeholder image">
+      <img :src="'http://localhost:8000/'+placeImage">
     </figure>
   </div>
   <div class="card-content">
@@ -38,6 +38,7 @@
         return {
           placeDetail: false,
           response: null,
+
         }
       },
       methods: {
