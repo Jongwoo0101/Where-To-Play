@@ -10,6 +10,11 @@
       <p class="title is-4">{{ placeName }}</p>
       <p>{{ placeLocation }}</p>
       <p>{{ placeDescription }}</p>
+      <p class="place-details" v-if="placeDetail">
+        연락처: {{ response.contact }}<br>
+        홈페이지: {{ response.homepage }}<br>
+        운영 시간: {{ response.time }}
+      </p>
     </div>
   </div>
 </div>
@@ -19,8 +24,7 @@
 </style>
 
 <script>
-import axios from 'axios';
-
+  import axios from 'axios';
     export default {
       name: 'PlaceCard',
       props: {
@@ -30,11 +34,21 @@ import axios from 'axios';
         placeLocation: "장소 위치",
         placeDescription: "장소 설명",
       },
+      data() {
+        return {
+          placeDetail: false,
+          response: null,
+        }
+      },
       methods: {
         click() {
           axios
           .get('http://localhost:8000/place/get/'+this.placeId+'/')
-          .then(res => { console.log(res.data) })
+          .then(res => {
+            this.placeDetail = true
+            console.log(res.data)
+            this.response = res.data
+          })
         }
       }  
     }
