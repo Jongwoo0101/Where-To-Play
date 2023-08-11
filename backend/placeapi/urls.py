@@ -6,6 +6,7 @@ from django.conf import settings
 urlpatterns = [
     path('add/', add_place, name='add place'),
     path('get/', get_place, name="get place"),
+    path('get/<int:id>/', get_place_detail),
 #    path('subinfo/', get_placesubinfo),
     path('comment/', write_comment),
     path('image/', post_image),

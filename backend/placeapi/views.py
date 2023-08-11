@@ -15,6 +15,13 @@ def get_place(request):
         place = PlaceInfo.objects.all()
         serializer = PlaceInfoSerializer(place, many=True)
         return Response(serializer.data)
+    
+@api_view(['GET'])
+def get_place_detail(request, id):
+    if request.method == 'GET':
+        place = PlaceInfo.objects.get(id=id)
+        serializer = PlaceInfoSerializer(place)
+        return Response(serializer.data)
 
 @api_view(['POST']) 
 @permission_classes([IsAuthenticated]) # 회원만 장소 추가 가능

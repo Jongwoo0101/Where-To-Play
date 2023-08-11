@@ -34,10 +34,3 @@ class PlaceInfo(models.Model):
     open_statuses = models.ManyToManyField(PlaceOpenStatus, related_name="open_statuses")
     ratings = models.ManyToManyField(PlaceRating, related_name="ratings")
     sub_images = models.ManyToManyField(PlaceImage, related_name="sub_images")
-
-class PlaceSubInfo(models.Model):
-    place = models.ForeignKey('PlaceInfo', on_delete=models.CASCADE)
-    comment = models.ForeignKey('PlaceComment', on_delete=models.CASCADE, null=True)
-    open_status = models.ForeignKey('PlaceOpenStatus', on_delete=models.CASCADE, null=True)
-    rating = models.ForeignKey('PlaceRating', on_delete=models.CASCADE, null=True)
-    sub_image = models.ForeignKey('PlaceImage', on_delete=models.CASCADE, null=True)

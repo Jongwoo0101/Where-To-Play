@@ -55,7 +55,9 @@ class PlaceInfoSerializer(serializers.ModelSerializer):
         required=False,
         use_url=True,
         max_length=None
-        )
+    )
+    id=serializers.ReadOnlyField()
+    # ManyToMany(M2M, 중첩) 필드들은 serializer에서 필수 X (최초 등록 시)
     comments = PlaceCommentSerializer(many=True, allow_null=True, required=False)
     open_statuses = PlaceOpenStatusSerializer(many=True, allow_null=True, required=False)
     sub_images = PlaceImageSerializer(many=True, allow_null=True, required=False)
@@ -63,6 +65,7 @@ class PlaceInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlaceInfo
         fields = [
+            'id',
             'image',
             'name',
             'uploader',
