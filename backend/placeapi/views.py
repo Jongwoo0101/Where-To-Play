@@ -92,18 +92,20 @@ def write_rating(request, placeinfo_id):
             
     
 @api_view(['GET', 'POST'])
-def write_status(request):
+def write_status(request, placeinfo_id):
+    place = PlaceInfo.objects.get(id=placeinfo_id)
     if (request.method == "POST"):
-        try:
-            serializer = PlaceOpenStatusSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-        except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        user = get_user_model().objects.get(nickname=request.data.get('username'))
+        openstatus = request.data.get('open_status')
+        open_status = PlaceOpenStatus.objects.create(username=user, open_status=openstatus)
+        place.open_statuses.add(open_status)
+        place.save()
+        serializer = PlaceOpenStatusSerializer(open_status)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
     elif (request.method == "GET"):
-        model = PlaceOpenStatus.objects.all()
-        serializer = PlaceOpenStatusSerializer(model, many=True)
+        model = place.open_statuses.all().last()
+        serializer = PlaceOpenStatusSerializer(model)
         return Response(serializer.data)
 
 # @api_view(['GET'])

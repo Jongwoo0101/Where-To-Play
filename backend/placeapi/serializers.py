@@ -33,13 +33,10 @@ class PlaceCommentSerializer(serializers.ModelSerializer):
         return comment
     
 class PlaceOpenStatusSerializer(serializers.ModelSerializer):
+    status_updated_at = serializers.ReadOnlyField()
     class Meta:
         model = PlaceOpenStatus
         fields = '__all__'
-    def create(self, validated_data):
-        open_status = PlaceOpenStatus(open_status=validated_data['open_status'])
-        open_status.save()
-        return open_status
     
 class PlaceRatingSerializer(serializers.ModelSerializer):
     class Meta:

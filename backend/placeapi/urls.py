@@ -10,6 +10,6 @@ urlpatterns = [
 #    path('subinfo/', get_placesubinfo),
     path('comment/', write_comment),
     path('image/', post_image),
-    path('open_status/', write_status),
+    path('open_status/<int:placeinfo_id>/', write_status),
     path('rating/<int:placeinfo_id>/', write_rating)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

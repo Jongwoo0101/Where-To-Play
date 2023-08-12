@@ -9,9 +9,9 @@ class PlaceComment(models.Model):
     comment_uploaded_at = models.DateTimeField(auto_now_add=True)
 
 class PlaceOpenStatus(models.Model):
-    user_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    username = models.CharField(max_length=14)
     open_status = models.BooleanField(default=False)
-    status_updated_at = models.DateTimeField(auto_now_add=True)
+    status_updated_at = models.DateTimeField(auto_now=True)
 
 class PlaceRating(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)

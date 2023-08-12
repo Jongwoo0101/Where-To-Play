@@ -13,9 +13,14 @@
       <a @click="open()">{{ openDetail }}</a>
       <p class="place-details" v-if="placeDetail">
         별점: {{ ratings }} / 5 <br>
+        상태: {{ openStatus.open_status? (openStatus.open_status? "열려있음":"닫힘"):"정보 없음" }}
+        <button @click="updateOpenStatus(true)">열렸어요</button><button @click="updateOpenStatus(false)">닫혔어요</button>
+        <br>
+        - 업데이트 시간: {{ openStatus.status_updated_at? openStatus.status_updated_at: "정보 없음" }} <br>
         연락처: {{ response.contact }}<br>
         홈페이지: <a :href="response.homepage" target="_blank">Link</a><br>
-        운영 시간: {{ response.time }}<br>
+        운영 시간: {{ response.time }}<br><br>
+        당신의 별점을 등록하세요!
         <StarRating @update:rating="setRating" :show-rating="false"/>
       </p>
     </div>
@@ -45,6 +50,7 @@
         return {
           ratings: '정보 없음',
           placeDetail: false,
+          openStatus: false,
           response: null,
           rating: 0,
           openDetail: '상세 정보 열기'
@@ -77,15 +83,19 @@
           this.rating = rating;
           this.addRating()
         },
-        getRateAverage() {
-          for (let i = 0; i < this.ratings.length; i++) {
-            var rate = 0;
-            rate+=this.ratings[i]
-            console.log(this.ratings[i])
-          }
-          rate/=this.ratings.length
-          this.ratings = rate;
-        }
+        updateOpenStatus(status) {
+          axios.post('http://192.168.219.113:8000/place/open_status/'+this.response.id+'/', {
+            "username": sessionStorage.getItem('nickname'),
+            "open_status": status
+          })
+          .then(res => {
+            console.log(res)
+            alert("상태가 업데이트 되었습니다!")
+          })
+          .catch(e => {
+            console.log(e)
+          })
+        },
       },
       mounted() {
         axios
@@ -106,6 +116,11 @@
                 this.ratings = rate;
               }
             })
+        axios
+        .get('http://192.168.219.113:8000/place/open_status/'+this.placeId+'/')
+        .then(res => {
+          this.openStatus = res.data
+        })
       }
     }
 </script>
