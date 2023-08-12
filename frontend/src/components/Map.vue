@@ -6,8 +6,10 @@
 
 <style scoped>
   #map {
+    position: relative;
     width: 100%;
     height: 100vh;
+    z-index: 1;
   }
   .refresh-btn {
     position: relative;
@@ -15,7 +17,7 @@
     margin: 5px 0 0 0;
     width: 100px;
     height: 45px;
-    z-index: 100;
+    z-index: 2;
     border: 0;
     background-color: #485fc7;
     color: white;
@@ -90,7 +92,7 @@
           
           this.geocoder = new kakao.maps.services.Geocoder();
           
-          axios.get("http://localhost:8000/place/get/")
+          axios.get("http://192.168.219.113:8000/place/get/")
           .then((response) => {
             for (let i = 0; i < response.data.length; i++) {
               let position = new kakao.maps.LatLng(response.data[i].lat, response.data[i].lng);

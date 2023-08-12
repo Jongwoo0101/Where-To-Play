@@ -30,16 +30,26 @@
         margin: 10px auto 10px auto;
     }
     .card-zone {
-        height: 95vh;
+        position: relative;
+        z-index: 2;
         overflow: scroll;
     }
     @media screen and (min-width: 960px) {
         .container {
             grid-template-columns: 3fr 1fr;
         }
+        .card-zone {
+            height: 95vh;
+        }
     }
     @media screen and (max-width: 960px) {
-        .container { grid-template-rows: 1fr 4fr; }
+        .container { grid-template-rows: 1fr 1fr; }
+        .place-cards {
+            height: 100vw;
+        }
+        .card-zone {
+            height: 100vw;
+        }
     }
     p {
         font-weight: 700;
@@ -64,7 +74,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:8000/place/get/')
+            axios.get('http://192.168.219.113:8000/place/get/')
             .then((res) => {
                 console.log(res.data)
                 this.placeInfo = res.data

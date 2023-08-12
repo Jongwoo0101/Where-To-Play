@@ -6,11 +6,11 @@
             <label for="file">사진 선택</label>
             <input @change="uploadImage" id="file" type="file" accept="image/*">
             <input v-model="placeName" type="text" placeholder="장소명(필수)">
-            <input v-model="placeAddress" type="text" placeholder="위치" disabled>
-            <input v-model="placeContact" type="text" placeholder="연락처">
-            <input v-model="placeHomepage" type="text" placeholder="홈페이지">
-            <input v-model="placeTime" type="text" placeholder="운영시간">
-            <textarea v-model="placeDescription" placeholder="여기는 어떤 장소인지 설명해주세요!"></textarea>
+            <input v-model="placeAddress" type="text" placeholder="위치(필수, 지도 클릭시 지정)" disabled>
+            <input v-model="placeContact" type="text" placeholder="연락처(선택)">
+            <input v-model="placeHomepage" type="text" placeholder="홈페이지(선택)">
+            <input v-model="placeTime" type="text" placeholder="운영시간(선택)">
+            <textarea v-model="placeDescription" placeholder="여기는 어떤 장소인지 설명해주세요!(선택)"></textarea>
             <legend><input type="checkbox">[선택] 개인정보 수집 및 이용 동의</legend>
             <button @click="submit()">장소 등록!</button>
         </div>

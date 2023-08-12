@@ -46,7 +46,7 @@
         justify-content: center;
     }
     nav {
-        margin: 0;
+        margin: 0 0 10px 0;
         padding: 0;
     }
     .mobile-navbar-item {

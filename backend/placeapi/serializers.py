@@ -45,10 +45,6 @@ class PlaceRatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlaceRating
         fields = '__all__'
-    def create(self, validated_data):
-        rating = PlaceRating(rating=validated_data['rating'])
-        rating.save()
-        return rating
 
 class PlaceInfoSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(
@@ -62,7 +58,7 @@ class PlaceInfoSerializer(serializers.ModelSerializer):
     comments = PlaceCommentSerializer(many=True, allow_null=True, required=False)
     open_statuses = PlaceOpenStatusSerializer(many=True, allow_null=True, required=False)
     sub_images = PlaceImageSerializer(many=True, allow_null=True, required=False)
-    ratings = PlaceRatingSerializer(many=True, allow_null=True, required=False)
+    ratings = PlaceRatingSerializer(many=True, read_only=True, allow_null=True, required=False)
     class Meta:
         model = PlaceInfo
         fields = [

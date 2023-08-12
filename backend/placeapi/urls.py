@@ -11,5 +11,5 @@ urlpatterns = [
     path('comment/', write_comment),
     path('image/', post_image),
     path('open_status/', write_status),
-    path('rating/', write_rating),
+    path('rating/<int:placeinfo_id>/', write_rating)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

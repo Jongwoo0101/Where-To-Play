@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, get_user_model
 # Create your views here.
 
 @api_view(['GET'])
@@ -68,20 +68,28 @@ def post_image(request):
 
 
 @api_view(['GET', 'POST'])
-def write_rating(request):
-    if (request.method == 'GET'):
-        model = PlaceRating.objects.all()
-        serializer = PlaceRatingSerializer(model, many=True)
-        return Response(serializer.data)
+def write_rating(request, placeinfo_id):
     if (request.method == 'POST'):
+        user = get_user_model().objects.get(nickname=request.data.get('user'))
+        place = PlaceInfo.objects.get(id=placeinfo_id)
+        rating_value = request.data.get('rating')
+
         try:
-            serializer = PlaceRatingSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-        except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
+            rating = PlaceRating.objects.get(user=user)
+            rating.rating = rating_value
+            rating.save()
+        except PlaceRating.DoesNotExist:
+            rating = PlaceRating.objects.create(user=user, rating=rating_value)
+            place.ratings.add(rating)
+        
+        place.save()
+        serializer = PlaceRatingSerializer(rating)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    if (request.method == 'GET'):
+        ratings = PlaceRating.objects.all()
+        serializer = PlaceRatingSerializer(ratings)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+            
     
 @api_view(['GET', 'POST'])
 def write_status(request):
