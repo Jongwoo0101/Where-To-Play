@@ -21,6 +21,7 @@ class PlaceRating(models.Model):
         unique_together = ['user', 'rating']
 
 class PlaceImage(models.Model):
+    username = models.CharField(max_length=14)
     image = models.ImageField(upload_to="placetalk_image",null=True)
     image_uploaded_at = models.DateTimeField(auto_now_add=True)
 

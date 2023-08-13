@@ -13,3 +13,11 @@ p.place-details{
 .comment-zone {
     margin: 1em 0 1em 0;
 }
+.subimage-container {
+    overflow: auto;
+    white-space: nowrap;
+    margin-top: 0.3rem;
+}
+.subimage-container>img {
+    max-height: 300px;
+}

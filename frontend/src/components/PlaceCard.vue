@@ -31,6 +31,15 @@
             :created_at="comment.comment_uploaded_at"
             />
           </div>
+          <div class="subimage-zone">
+            <input @change="getImage" type="file" accept="image/*">
+            <button @click="uploadImage">업로드하기</button>
+            <p>장소 세부 이미지</p>
+            <div class="subimage-container">
+              <img v-if="!this.response.sub_images.image" src="@/assets/unavailable-image.jpg">
+              <img v-for="datas in this.response.sub_images" :src="'http://192.168.219.113:8000'+datas.image">
+            </div>
+          </div>
         </div>
     </div>
   </div>
@@ -65,7 +74,8 @@
           response: null,
           rating: 0,
           openDetail: '상세 정보 열기',
-          commentBox: ''
+          commentBox: '',
+          image: null
         }
       },
       methods: {
@@ -116,6 +126,26 @@
           .then(res => {
             console.log(res)
             alert("댓글 작성이 완료되었습니다!")
+          })
+          .catch(e => {
+            console.log(e)
+          })
+        },
+        getImage(imageFile) {
+          this.image = imageFile
+        },
+        uploadImage() {
+          const formData = new FormData()
+          if (this.image)
+            formData.append('image', this.image.originalTarget.files[0])
+          formData.append('username', sessionStorage.getItem('nickname'))
+          axios.post("http://192.168.219.113:8000/place/image/"+this.response.id+'/', 
+            formData,
+            { headers: { 'Content-Type': 'multipart/form-data' } }
+          )
+          .then(res => {
+            console.log(res)
+            alert("등록이 완료되었습니다!")
           })
           .catch(e => {
             console.log(e)

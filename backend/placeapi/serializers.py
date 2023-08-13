@@ -14,23 +14,13 @@ class PlaceImageSerializer(serializers.ModelSerializer):
     
     image = serializers.ImageField(
         use_url=True,
-        max_length=None,
-        allow_null=True
+        max_length=None
     )
-
-    def create(self, validated_data):
-        img = PlaceImage(image=validated_data['image'])
-        img.save()
-        return img
     
 class PlaceCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlaceComment
         fields = '__all__'
-    def create(self, validated_data):
-        comment = PlaceComment(comment=validated_data['comment'])
-        comment.save()
-        return comment
     
 class PlaceOpenStatusSerializer(serializers.ModelSerializer):
     status_updated_at = serializers.ReadOnlyField()

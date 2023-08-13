@@ -59,17 +59,23 @@ def comment(request, placeinfo_id):
 
 @api_view(['GET', 'POST'])
 def image(request, placeinfo_id):
-    if(request.method == 'POST'):
+    if (request.method == 'POST'):
         try:
-            serializer = PlaceImageSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, content_type='multipart/form-data', status=status.HTTP_201_CREATED)
+            user = get_user_model().objects.get(nickname=request.data.get('username'))
+            place = PlaceInfo.objects.get(id=placeinfo_id)
+            image_data = request.data.get('image')
+
+            image = PlaceImage.objects.create(username=user, image=image_data)
+            place.sub_images.add(image)
+            place.save()
+            serializer = PlaceImageSerializer(image)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response(e)
+
     elif (request.method == 'GET'):
-        model = PlaceImage.objects.all()
-        serializer = PlaceImageSerializer(model, many=True)
+        model = PlaceInfo.sub_images.all()
+        serializer = PlaceCommentSerializer(model)
         return Response(serializer.data)
 
 
