@@ -11,7 +11,7 @@
       <p>{{ placeLocation }}</p>
       <p>{{ placeDescription }}</p>
       <a @click="open()">{{ openDetail }}</a>
-      <p class="place-details" v-if="placeDetail">
+      <div class="place-details" v-if="placeDetail">
         별점: {{ ratings }} / 5 <br>
         상태: {{ openStatus.open_status? (openStatus.open_status? "열려있음":"닫힘"):"정보 없음" }}
         <button @click="updateOpenStatus(true)">열렸어요</button><button @click="updateOpenStatus(false)">닫혔어요</button>
@@ -22,13 +22,16 @@
         운영 시간: {{ response.time }}<br><br>
         당신의 별점을 등록하세요!
         <StarRating @update:rating="setRating" :show-rating="false"/>
-        <input type="text" v-model="commentbox">
-        <Comment
-        username="유저 이름"
-        commentValue="댓글내용입니다블라블라~~"
-        created_at="20230813"
-        />
-      </p>
+        <div class="comment-zone">
+          <input type="text" v-model="commentBox"><button @click="postcomment()">댓글 등록</button>
+            <Comment
+            v-for="comment in this.response.comments"
+            :username="comment.username"
+            :commentValue="comment.comment"
+            :created_at="comment.comment_uploaded_at"
+            />
+          </div>
+        </div>
     </div>
   </div>
 </div>
@@ -62,7 +65,7 @@
           response: null,
           rating: 0,
           openDetail: '상세 정보 열기',
-          commentbox: ''
+          commentBox: ''
         }
       },
       methods: {
@@ -105,6 +108,19 @@
             console.log(e)
           })
         },
+        postcomment() {
+          axios.post('http://192.168.219.113:8000/place/comment/'+this.response.id+'/', {
+            "username": sessionStorage.getItem('nickname'),
+            "comment": this.commentBox
+          })
+          .then(res => {
+            console.log(res)
+            alert("댓글 작성이 완료되었습니다!")
+          })
+          .catch(e => {
+            console.log(e)
+          })
+        }
       },
       mounted() {
         axios

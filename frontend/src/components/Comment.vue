@@ -8,7 +8,7 @@
 
 <style scoped>
     .comment-box {
-        margin: 0.4em;
+        margin: 0.5em;
         display: block;
         max-width: 90%;
         border-radius: 0.5em;
