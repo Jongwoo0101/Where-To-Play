@@ -11,7 +11,7 @@
             <router-link to="/thememap"><p class="link">테마 지도</p></router-link>
         </div>
         <div class="navbar-memberinfo" :class="{ loggedIn: isLoggedin }">
-            <p v-if="isLoggedin">레벨 0,</p>
+            <p v-if="isLoggedin">레벨 {{ level }},</p>
             <p v-if="isLoggedin">{{ nickname }}</p>
             <p class="link" v-if="isLoggedin" @click="logout()">로그아웃</p>
             <router-link to="/login" v-if="!isLoggedin"><p v-if="!isLoggedin" class="login link">로그인</p></router-link>
@@ -178,6 +178,7 @@
                 isActive: false,
                 isShown: false,
                 nickname: '',
+                level: '0'
             }
         },
         updated() {
@@ -198,6 +199,7 @@
                 if (sessionStorage.getItem("userToken") != null) {
                     this.isLoggedin = true;
                     this.nickname = sessionStorage.getItem('nickname')
+                    this.level = sessionStorage.getItem('level')
                 } else
                     this.isLoggedin = false;
             },
@@ -212,6 +214,7 @@
             logout() {
                 sessionStorage.removeItem('userToken');
                 sessionStorage.removeItem('username');
+                sessionStorage.removeItem('level');
                 this.$forceUpdate();
             }
         }

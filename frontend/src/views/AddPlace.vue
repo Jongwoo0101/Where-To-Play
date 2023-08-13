@@ -3,7 +3,7 @@
         <Map @place="getInfo"/>
         <div class="placeform">
             <p>장소 등록</p>
-            <label for="file">사진 선택</label>
+            <label for="file">{{ fileLabel }}</label>
             <input @change="uploadImage" id="file" type="file" accept="image/*">
             <input v-model="placeName" type="text" placeholder="장소명(필수)">
             <input v-model="placeAddress" type="text" placeholder="위치(필수, 지도 클릭시 지정)" disabled>
@@ -134,7 +134,8 @@
                 placeContact: '',
                 placeHomepage: '',
                 placeTime: '',
-                placeDescription: ''
+                placeDescription: '',
+                fileLabel: '메인 사진 업로드'
             }
         },
         methods: {
@@ -145,6 +146,7 @@
             },
             uploadImage(imageFile) {
                 this.image = imageFile
+                this.fileLabel = imageFile.originalTarget.files[0].name
             },
             submit() {
                 if ((this.placeAddress != null)&&

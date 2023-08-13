@@ -9,6 +9,7 @@
   "dependencies": {
     "@vue/cli": "^5.0.8",
     "axios": "^1.4.0",
+    "crypto-js": "^4.1.1",
     "fs": "^0.0.1-security",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",

@@ -74,7 +74,7 @@
             }
         },
         mounted() {
-            axios.get('http://192.168.219.113:8000/place/get/')
+            axios.get(process.env.VUE_APP_BACKEND_ADDRESS+'/place/get/')
             .then((res) => {
                 console.log(res.data)
                 this.placeInfo = res.data

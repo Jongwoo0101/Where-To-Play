@@ -113,7 +113,7 @@ button:hover {
         },
         methods: {
             submit() {
-                axios.post("http://localhost:8000/auth/login/",{
+                axios.post(process.env.VUE_APP_BACKEND_ADDRESS+"/auth/login/",{
                     "username": this.id,
                     "password": this.pw
                 }, {
@@ -125,6 +125,7 @@ button:hover {
                     console.log(response.data)
                     sessionStorage.setItem('nickname', response.data.nickname.nickname)
                     sessionStorage.setItem('userToken', response.data.token)
+                    sessionStorage.setItem('level', response.data.level)
                     this.$router.push("/")
                 })
                 .catch( response => { console.log(response), alert("로그인 정보를 다시 확인하세요")})

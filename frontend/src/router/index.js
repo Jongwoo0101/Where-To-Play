@@ -37,6 +37,11 @@ const routes = [
     name: 'addplace',
     component: require('@/views/AddPlace.vue').default
   },
+  {
+    path: '/thememap',
+    name: 'thememap',
+    component: require('@/views/ThemeMap.vue').default
+  }
 ]
 
 const router = createRouter({

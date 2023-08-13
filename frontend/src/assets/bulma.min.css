@@ -17,6 +17,8 @@ p.place-details{
     overflow: auto;
     white-space: nowrap;
     margin-top: 0.3rem;
+    padding: 0.1rem;
+    background-color: #cecece;
 }
 .subimage-container>img {
     max-height: 300px;

@@ -1,10 +1,16 @@
 from rest_framework import serializers
-from .models import CustomUser
+from .models import *
+
+class UserLevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserLevel
+        fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
+    levels = UserLevelSerializer(allow_null=True, required=False)
     class Meta:
         model = CustomUser
-        fields = ['username', 'realname', 'nickname', 'email', 'password', 'phonenumber', 'first_priority', 'second_priority', 'third_priority']
+        fields = ['username', 'realname', 'nickname', 'email', 'password', 'phonenumber', 'first_priority', 'second_priority', 'third_priority', 'levels']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):

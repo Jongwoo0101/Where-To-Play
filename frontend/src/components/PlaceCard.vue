@@ -2,7 +2,7 @@
 <div class="card" :id="placeId">
   <div class="card-image">
     <figure class="image is-4by3">
-      <img :src="'http://192.168.219.113:8000/'+placeImage">
+      <img :src="this.backend_url+placeImage">
     </figure>
   </div>
   <div class="card-content">
@@ -14,16 +14,19 @@
       <div class="place-details" v-if="placeDetail">
         별점: {{ ratings }} / 5 <br>
         상태: {{ openStatus.open_status? (openStatus.open_status? "열려있음":"닫힘"):"정보 없음" }}
-        <button @click="updateOpenStatus(true)">열렸어요</button><button @click="updateOpenStatus(false)">닫혔어요</button>
+        <button style="background-color: #23C55D; border: 0;" @click="updateOpenStatus(true)">열렸어요</button><button style="background-color: #F84F31; border: 0;" @click="updateOpenStatus(false)">닫혔어요</button>
         <br>
-        - 업데이트 시간: {{ openStatus.status_updated_at? openStatus.status_updated_at: "정보 없음" }} <br>
+        <p style="font-size: 8pt; color: #aaaaaa; text-align: right;">업데이트 시간: {{ openStatus.status_updated_at? openStatus.status_updated_at: "정보 없음" }}</p>
         연락처: {{ response.contact }}<br>
         홈페이지: <a :href="response.homepage" target="_blank">Link</a><br>
         운영 시간: {{ response.time }}<br><br>
         당신의 별점을 등록하세요!
         <StarRating @update:rating="setRating" :show-rating="false"/>
         <div class="comment-zone">
-          <input type="text" v-model="commentBox"><button @click="postcomment()">댓글 등록</button>
+          <div class="post-comment" style="position: relative;">
+            <input type="text" style="width: 100%; height: 1.7rem;" v-model="commentBox">
+            <button style="position: absolute; top: 0; right: 0.1px; margin-top: 0.2rem;" @click="postcomment()">댓글 등록</button>
+          </div>
             <Comment
             v-for="comment in this.response.comments"
             :username="comment.username"
@@ -32,12 +35,12 @@
             />
           </div>
           <div class="subimage-zone">
-            <input @change="getImage" type="file" accept="image/*">
-            <button @click="uploadImage">업로드하기</button>
             <p>장소 세부 이미지</p>
+            <input style="padding: 3px; border-radius: 3px; border: 1px solid #8b8b8b; margin: 4px;" @change="getImage" type="file" accept="image/*">
+            <button @click="uploadImage">업로드하기</button>
             <div class="subimage-container">
-              <img v-if="!this.response.sub_images.image" src="@/assets/unavailable-image.jpg">
-              <img v-for="datas in this.response.sub_images" :src="'http://192.168.219.113:8000'+datas.image">
+              <img v-if="!this.response.sub_images[0]" src="@/assets/unavailable-image.jpg">
+              <img v-for="datas in this.response.sub_images" :src="this.backend_url+datas.image">
             </div>
           </div>
         </div>
@@ -68,6 +71,7 @@
       },
       data() {
         return {
+          backend_url: '',
           ratings: '정보 없음',
           placeDetail: false,
           openStatus: false,
@@ -89,7 +93,7 @@
           }
         },
         addRating() {
-          axios.post('http://192.168.219.113:8000/place/rating/'+this.response.id+'/', {
+          axios.post(process.env.VUE_APP_BACKEND_ADDRESS+'/place/rating/'+this.response.id+'/', {
             "user": sessionStorage.getItem('nickname'),
             "rating": this.rating
           })
@@ -98,6 +102,7 @@
             alert("별점 등록 성공")
           })
           .catch(e => {
+            alert("해당 기능은 로그인 후 사용 가능합니다.")
             console.log(e)
           })
         },
@@ -106,7 +111,7 @@
           this.addRating()
         },
         updateOpenStatus(status) {
-          axios.post('http://192.168.219.113:8000/place/open_status/'+this.response.id+'/', {
+          axios.post(process.env.VUE_APP_BACKEND_ADDRESS+'/place/open_status/'+this.response.id+'/', {
             "username": sessionStorage.getItem('nickname'),
             "open_status": status
           })
@@ -115,21 +120,27 @@
             alert("상태가 업데이트 되었습니다!")
           })
           .catch(e => {
+            alert("해당 기능은 로그인 후 사용 가능합니다.")
             console.log(e)
           })
         },
         postcomment() {
-          axios.post('http://192.168.219.113:8000/place/comment/'+this.response.id+'/', {
+          if (this.commentBox != '') {
+            axios.post(process.env.VUE_APP_BACKEND_ADDRESS+'/place/comment/'+this.response.id+'/', {
             "username": sessionStorage.getItem('nickname'),
             "comment": this.commentBox
-          })
-          .then(res => {
-            console.log(res)
-            alert("댓글 작성이 완료되었습니다!")
-          })
-          .catch(e => {
-            console.log(e)
-          })
+            })
+            .then(res => {
+              console.log(res)
+              alert("댓글 작성이 완료되었습니다!")
+            })
+            .catch(e => {
+              console.log(e)
+              alert("해당 기능은 로그인 후 사용 가능합니다.")
+            })
+          } else {
+            alert("댓글을 입력해주세요!")
+          }
         },
         getImage(imageFile) {
           this.image = imageFile
@@ -139,7 +150,7 @@
           if (this.image)
             formData.append('image', this.image.originalTarget.files[0])
           formData.append('username', sessionStorage.getItem('nickname'))
-          axios.post("http://192.168.219.113:8000/place/image/"+this.response.id+'/', 
+          axios.post(process.env.VUE_APP_BACKEND_ADDRESS+"/place/image/"+this.response.id+'/', 
             formData,
             { headers: { 'Content-Type': 'multipart/form-data' } }
           )
@@ -148,13 +159,15 @@
             alert("등록이 완료되었습니다!")
           })
           .catch(e => {
+            alert("해당 기능은 로그인 후 사용 가능합니다.")
             console.log(e)
           })
         }
       },
       mounted() {
+        this.backend_url = process.env.VUE_APP_BACKEND_ADDRESS
         axios
-            .get('http://192.168.219.113:8000/place/get/'+this.placeId+'/')
+            .get(process.env.VUE_APP_BACKEND_ADDRESS+'/place/get/'+this.placeId+'/')
             .then(res => {
               console.log(res.data)
               this.response = res.data
@@ -172,7 +185,7 @@
               }
             })
         axios
-        .get('http://192.168.219.113:8000/place/open_status/'+this.placeId+'/')
+        .get(process.env.VUE_APP_BACKEND_ADDRESS+'/place/open_status/'+this.placeId+'/')
         .then(res => {
           this.openStatus = res.data
         })

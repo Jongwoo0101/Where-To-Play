@@ -92,7 +92,7 @@
           
           this.geocoder = new kakao.maps.services.Geocoder();
           
-          axios.get("http://192.168.219.113:8000/place/get/")
+          axios.get(process.env.VUE_APP_BACKEND_ADDRESS+"/place/get/")
           .then((response) => {
             for (let i = 0; i < response.data.length; i++) {
               let position = new kakao.maps.LatLng(response.data[i].lat, response.data[i].lng);
@@ -144,6 +144,7 @@
         },
         refreshCurrentPos() {
           if (navigator.geolocation) {
+            alert("위치를 불러오는데 시간이 약 10초 이상 소요될 수 있습니다.")
             navigator.geolocation.getCurrentPosition((pos) => {
               localStorage.setItem('currentPos', [pos.coords.latitude, pos.coords.longitude])
               let currentPos = localStorage.getItem('currentPos').split(',')
