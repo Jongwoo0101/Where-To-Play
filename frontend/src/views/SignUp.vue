@@ -125,7 +125,6 @@
                                 this.$router.push("/")
                             })
                             .catch( response => {
-                                console.log(response)
                                 alert("회원가입에 실패했습니다!")
                             })
                         } else {
