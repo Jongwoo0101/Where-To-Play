@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 # Create your models here.
 
 class PlaceComment(models.Model):
-    user_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    username = models.CharField(max_length=14)
     comment = models.TextField(null=True)
     comment_uploaded_at = models.DateTimeField(auto_now_add=True)
 

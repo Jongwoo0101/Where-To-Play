@@ -22,6 +22,12 @@
         운영 시간: {{ response.time }}<br><br>
         당신의 별점을 등록하세요!
         <StarRating @update:rating="setRating" :show-rating="false"/>
+        <input type="text" v-model="commentbox">
+        <Comment
+        username="유저 이름"
+        commentValue="댓글내용입니다블라블라~~"
+        created_at="20230813"
+        />
       </p>
     </div>
   </div>
@@ -34,10 +40,12 @@
 <script>
   import axios from 'axios';
   import StarRating from 'vue-star-rating'
+  import Comment from '@/components/Comment.vue'
     export default {
       name: 'PlaceCard',
       components: {
-        StarRating
+        StarRating,
+        Comment
       },
       props: {
         placeId: '',
@@ -53,7 +61,8 @@
           openStatus: false,
           response: null,
           rating: 0,
-          openDetail: '상세 정보 열기'
+          openDetail: '상세 정보 열기',
+          commentbox: ''
         }
       },
       methods: {

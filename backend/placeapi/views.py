@@ -37,22 +37,28 @@ def add_place(request):
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['GET', 'POST'])
-def write_comment(request):
+def comment(request, placeinfo_id):
     if (request.method == 'POST'):
         try:
-            serializer = PlaceCommentSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            user = get_user_model().objects.get(nickname=request.data.get('username'))
+            place = PlaceInfo.objects.get(id=placeinfo_id)
+            comment_value = request.data.get('comment')
+
+            comment = PlaceComment.objects.create(username=user, comment=comment_value)
+            place.comments.add(comment)
+            place.save()
+            serializer = PlaceCommentSerializer(comment)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response(e)
+
     elif (request.method == 'GET'):
-        model = PlaceComment.objects.all()
-        serializer = PlaceCommentSerializer(model, many=True)
+        model = PlaceInfo.comments.all()
+        serializer = PlaceCommentSerializer(model)
         return Response(serializer.data)
 
 @api_view(['GET', 'POST'])
-def post_image(request):
+def image(request, placeinfo_id):
     if(request.method == 'POST'):
         try:
             serializer = PlaceImageSerializer(data=request.data)
@@ -68,13 +74,13 @@ def post_image(request):
 
 
 @api_view(['GET', 'POST'])
-def write_rating(request, placeinfo_id):
+def rating(request, placeinfo_id):
     if (request.method == 'POST'):
         user = get_user_model().objects.get(nickname=request.data.get('user'))
         place = PlaceInfo.objects.get(id=placeinfo_id)
         rating_value = request.data.get('rating')
 
-        try:
+        try: # rating은 1명이 1개만 쓸 수 있기에 평점 존재 시 수정 처리
             rating = PlaceRating.objects.get(user=user)
             rating.rating = rating_value
             rating.save()
@@ -92,7 +98,7 @@ def write_rating(request, placeinfo_id):
             
     
 @api_view(['GET', 'POST'])
-def write_status(request, placeinfo_id):
+def placestatus(request, placeinfo_id):
     place = PlaceInfo.objects.get(id=placeinfo_id)
     if (request.method == "POST"):
         user = get_user_model().objects.get(nickname=request.data.get('username'))

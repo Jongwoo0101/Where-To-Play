@@ -7,9 +7,8 @@ urlpatterns = [
     path('add/', add_place, name='add place'),
     path('get/', get_place, name="get place"),
     path('get/<int:id>/', get_place_detail),
-#    path('subinfo/', get_placesubinfo),
-    path('comment/', write_comment),
-    path('image/', post_image),
-    path('open_status/<int:placeinfo_id>/', write_status),
-    path('rating/<int:placeinfo_id>/', write_rating)
+    path('comment/<int:placeinfo_id>/', comment),
+    path('image/<int:placeinfo_id>/', image),
+    path('open_status/<int:placeinfo_id>/', placestatus),
+    path('rating/<int:placeinfo_id>/', rating)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
