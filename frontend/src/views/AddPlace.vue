@@ -169,7 +169,7 @@
                 formData.append('created_at', date)
                 formData.append('updated_at', date)
                 formData.append('uploader', sessionStorage.getItem('nickname'))
-                axios.post("http://localhost:8000/place/add/", 
+                axios.post(process.env.VUE_APP_BACKEND_ADDRESS+"/place/add/", 
                     formData
                     ,{ headers: { 'Content-Type': 'multipart/form-data', Authorization: 'Token '+sessionStorage.getItem('userToken')}
                 })
