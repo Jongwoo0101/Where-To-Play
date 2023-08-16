@@ -1,6 +1,6 @@
 # Where To Play ⁉️
 ![banner](https://github.com/Jongwoo0101/Where-To-Play/assets/96978536/937cba69-9b9c-4da9-8560-075ea69b5243)
-현대해상 X 어썸스쿨 하이챌린지스쿨에서 진행하는 4조(*자료구조*) 프로젝트.
+현대해상 X 어썸스쿨 하이챌린지스쿨에서 진행하는 4조(*자료구조*) 프로젝트.   
 
 <br />
 
@@ -116,7 +116,8 @@
 <br />
 
 ## ⏰ 1차 마감
-**개발 진행상태**
+**개발 진행상태** 
+[![GitHub release](https://img.shields.io/github/release/Jongwoo0101/Where-To-Play.svg)](https://github.com/Jongwoo0101/Where-To-Play/releases/latest)
 | 작업 완료 여부 | 작업 내용 |
 |------|------|
 | :ballot_box_with_check:  완료 | 로그인, 회원가입, 운동장 찾기, 운동장 등록 ([테마지도를 제외한 모든 기능 구현완료](https://github.com/Jongwoo0101/Where-To-Play/commit/4ef939012cda0064fb02e82b6742d5b43e0a80a6)) |
