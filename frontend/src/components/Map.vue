@@ -61,7 +61,7 @@
         loadAPI() { // API를 불러와 저장하는 함수
           const script = document.createElement("script");
           script.src =
-          "http://dapi.kakao.com/v2/maps/sdk.js?appkey=" + process.env.VUE_APP_KAKAO_JS_APPKEY + "&libraries=services&autoload=false";
+          "https://dapi.kakao.com/v2/maps/sdk.js?appkey=" + process.env.VUE_APP_KAKAO_JS_APPKEY + "&libraries=services&autoload=false";
           script.onload = () => window.kakao.maps.load(this.loadMap);
           document.head.appendChild(script);
         },

@@ -3,3 +3,4 @@ node_modules
 .env
 /backend/secrets.json
 /backend/backend/__pycache__
+/backend/db.sqlite3
