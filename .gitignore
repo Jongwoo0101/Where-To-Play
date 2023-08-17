@@ -5,3 +5,4 @@ node_modules
 /backend/backend/__pycache__
 /backend/placeapi/__pycache__
 /backend/accounts/__pycache__
+/backend/db.sqlite3
