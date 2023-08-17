@@ -1,5 +1,5 @@
 # Where To Play ⁉️
-![banner](https://github.com/Jongwoo0101/Where-To-Play/assets/96978536/937cba69-9b9c-4da9-8560-075ea69b5243)
+![banner](https://wheretoplay.kr)
 현대해상 X 어썸스쿨 하이챌린지스쿨에서 진행하는 4조(*자료구조*) 프로젝트.
 ➡️[사이트 바로가기](http://wheretoplay.kr)⬅️
 
