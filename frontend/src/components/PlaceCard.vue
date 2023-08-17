@@ -97,7 +97,7 @@
             "user": sessionStorage.getItem('nickname'),
             "rating": this.rating
           })
-          .then(res => {
+          .then(() => {
             alert("별점 등록 성공")
           })
           .catch(e => {

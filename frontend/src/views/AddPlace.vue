@@ -176,7 +176,7 @@
                 .then(() => {
                     alert("등록이 완료되었습니다!")
                 })
-                .catch(e => {
+                .catch((e) => {
                     if (e.message == "Request failed with status code 401") alert('에러: 장소 등록을 위해선 로그인이 필요합니다.')
                     else alert("오류가 발생했습니다.")
                 })
