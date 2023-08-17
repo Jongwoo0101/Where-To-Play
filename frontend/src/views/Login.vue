@@ -14,11 +14,15 @@
 .container {
     display: flex;
     justify-content: center;
+    
 }
+
 .form {
     width: 50%;
+    top: 5rem;
     display: grid;
     position: relative;
+    background: #FFFFFF;
 }
 
 .id {
