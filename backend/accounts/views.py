@@ -57,7 +57,7 @@ def register_user(request):
     else:
         user = CustomUser.objects.all()
         serializer = UserSerializer(user, many=True)
-        return Response(serializer.data)
+        return Response(status=status.HTTP_201_CREATED)
     
 @api_view(['POST', 'GET'])
 def level(request, nickname):
