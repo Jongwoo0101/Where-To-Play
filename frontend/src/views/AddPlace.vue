@@ -4,7 +4,7 @@
         <div class="placeform">
             <p>장소 등록</p>
             <label for="file">{{ fileLabel }}</label>
-            <input @change="uploadImage" id="file" type="file" accept="image/*">
+            <input @change="uploadImage($event)" id="file" type="file" accept="image/*">
             <input v-model="placeName" type="text" placeholder="장소명(필수)">
             <input v-model="placeAddress" type="text" placeholder="위치(필수, 지도 클릭시 지정)" disabled>
             <input v-model="placeContact" type="text" placeholder="연락처(선택)">
@@ -144,8 +144,8 @@
                 this.placeAddress = location[1];
             },
             uploadImage(imageFile) {
-                this.image = imageFile
-                this.fileLabel = imageFile.originalTarget.files[0].name
+                this.image = imageFile.target.files[0];
+                this.fileLabel = this.image.name;
             },
             submit() {
                 if ((this.placeAddress != null)&&
@@ -157,7 +157,7 @@
                 const position = this.placeLocation.split(', ');
                 const formData = new FormData()
                 if (this.image)
-                    formData.append('image', this.image.originalTarget.files[0])
+                    formData.append('image', this.image)
                 formData.append('name', this.placeName)
                 formData.append('lat', position[0])
                 formData.append('lng', position[1])
