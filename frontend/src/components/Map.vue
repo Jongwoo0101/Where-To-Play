@@ -111,14 +111,12 @@
           })
           .catch((err) => {
             alert("장소 정보들을 불러오는데 실패했습니다.")
-            console.log(err)
           })
         },
         clickEvent(mouseEvent) { // 마우스 클릭 시 좌표를 가져오기 위한 함수
           let latlng = mouseEvent.latLng;
           let message = latlng.getLat() + ', ' + latlng.getLng()
           this.location = message;
-          console.log("clicked")
           this.geocoder.coord2Address(latlng.getLng(), latlng.getLat(), (result, status) => {
             if (result[0].road_address != null){
               this.address = result[0].road_address.address_name

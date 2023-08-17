@@ -73,6 +73,17 @@
     button.sumbit:hover {
         background-color: #1362ff;
     }
+    @media screen and (max-width: 960px) {
+        .form {
+        background-color: white;
+        display: grid;
+        width: 80vw;
+        margin: 10vw auto 10vw auto;
+        padding: 5vh 5vw 5vh 5vw;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.3em 1em 0.1em #a3a3a3;
+    }
+    }
 </style>
 
 <script>
@@ -125,7 +136,6 @@
                                 this.$router.push("/")
                             })
                             .catch( response => {
-                                console.log(response)
                                 alert("회원가입에 실패했습니다!")
                             })
                         } else {

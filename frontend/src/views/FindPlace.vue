@@ -76,11 +76,9 @@
         mounted() {
             axios.get(process.env.VUE_APP_BACKEND_ADDRESS+'/place/get/')
             .then((res) => {
-                console.log(res.data)
                 this.placeInfo = res.data
             })
             .catch((e) => {
-                console.log(e)
                 alert('장소 세부 정보를 불러오는 데 실패했습니다!')
             })
         }

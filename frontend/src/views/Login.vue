@@ -122,13 +122,12 @@ button:hover {
                     }
                 })
                 .then( response => {
-                    console.log(response.data)
                     sessionStorage.setItem('nickname', response.data.nickname.nickname)
                     sessionStorage.setItem('userToken', response.data.token)
                     sessionStorage.setItem('level', response.data.level)
                     this.$router.push("/")
                 })
-                .catch( response => { console.log(response), alert("로그인 정보를 다시 확인하세요")})
+                .catch( response => { alert("로그인 정보를 다시 확인하세요")})
             },
         }
     }

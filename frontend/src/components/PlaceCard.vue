@@ -98,12 +98,10 @@
             "rating": this.rating
           })
           .then(res => {
-            console.log(res)
             alert("별점 등록 성공")
           })
           .catch(e => {
             alert("해당 기능은 로그인 후 사용 가능합니다.")
-            console.log(e)
           })
         },
         setRating: function(rating) {
@@ -116,12 +114,10 @@
             "open_status": status
           })
           .then(res => {
-            console.log(res)
             alert("상태가 업데이트 되었습니다!")
           })
           .catch(e => {
             alert("해당 기능은 로그인 후 사용 가능합니다.")
-            console.log(e)
           })
         },
         postcomment() {
@@ -131,11 +127,9 @@
             "comment": this.commentBox
             })
             .then(res => {
-              console.log(res)
               alert("댓글 작성이 완료되었습니다!")
             })
             .catch(e => {
-              console.log(e)
               alert("해당 기능은 로그인 후 사용 가능합니다.")
             })
           } else {
@@ -155,12 +149,10 @@
             { headers: { 'Content-Type': 'multipart/form-data' } }
           )
           .then(res => {
-            console.log(res)
             alert("등록이 완료되었습니다!")
           })
           .catch(e => {
             alert("해당 기능은 로그인 후 사용 가능합니다.")
-            console.log(e)
           })
         }
       },
@@ -169,18 +161,15 @@
         axios
             .get(process.env.VUE_APP_BACKEND_ADDRESS+'/place/get/'+this.placeId+'/')
             .then(res => {
-              console.log(res.data)
               this.response = res.data
               if (this.response.homepage.search("https://") != 0 && this.response.homepage.search("http://") != 0)
                 this.response.homepage = "//" + this.response.homepage
               if (this.response.ratings[0] != null)  {// ratings data가 available하다면 평균 내기
-                console.log("result: ", this.response.ratings.length)
                 for (let i = 0; i < this.response.ratings.length; i++) {
                   var rate = 0;
                   rate+=this.response.ratings[i].rating
                 }
                 rate/=this.response.ratings.length
-                console.log("[Result of rate]: ", rate)
                 this.ratings = rate;
               }
             })
