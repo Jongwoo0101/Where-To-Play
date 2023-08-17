@@ -20,7 +20,7 @@
         연락처: {{ response.contact }}<br>
         홈페이지: <a :href="response.homepage" target="_blank">Link</a><br>
         운영 시간: {{ response.time }}<br><br>
-        당신의 별점을 등록하세요!
+        별점을 등록하세요!
         <StarRating @update:rating="setRating" :show-rating="false"/>
         <div class="comment-zone">
           <div class="post-comment" style="position: relative;">
