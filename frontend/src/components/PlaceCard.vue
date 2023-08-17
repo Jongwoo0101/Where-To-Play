@@ -13,7 +13,7 @@
       <a @click="open()">{{ openDetail }}</a>
       <div class="place-details" v-if="placeDetail">
         별점: {{ ratings }} / 5 <br>
-        상태: {{ openStatus.open_status? (openStatus.open_status? "열려있음":"닫힘"):"정보 없음" }}
+        상태: {{ openStatus.open_status? "열려있음":"닫힘" }}
         <button style="background-color: #23C55D; border: 0;" @click="updateOpenStatus(true)">열렸어요</button><button style="background-color: #F84F31; border: 0;" @click="updateOpenStatus(false)">닫혔어요</button>
         <br>
         <p style="font-size: 8pt; color: #aaaaaa; text-align: right;">업데이트 시간: {{ openStatus.status_updated_at? openStatus.status_updated_at: "정보 없음" }}</p>
