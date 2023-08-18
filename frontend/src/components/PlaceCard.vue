@@ -137,12 +137,12 @@
           }
         },
         getImage(imageFile) {
-          this.image = imageFile
+          this.image = imageFile.target.files[0]
         },
         uploadImage() {
           const formData = new FormData()
           if (this.image)
-            formData.append('image', this.image.originalTarget.files[0])
+            formData.append('image', this.image)
           formData.append('username', sessionStorage.getItem('nickname'))
           axios.post(process.env.VUE_APP_BACKEND_ADDRESS+"/place/image/"+this.response.id+'/', 
             formData,
