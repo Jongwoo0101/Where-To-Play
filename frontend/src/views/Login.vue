@@ -14,6 +14,7 @@
 .container {
     display: flex;
     justify-content: center;
+    
 }
 
 .form {
@@ -110,8 +111,8 @@ button:hover {
         name: "Login",
         data() {
             return {
-                id: '',
-                pw: '',
+                id: null,
+                pw: null,
             }
         },
         methods: {

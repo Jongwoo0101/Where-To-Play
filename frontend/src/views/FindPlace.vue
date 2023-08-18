@@ -5,6 +5,7 @@
             <p>운동장 목록</p>
             <div class="card-zone">
                 <PlaceCard
+                :key="key"
                 v-for="data in placeInfo"
                 :placeId="data.id"
                 :placeImage="data.image"
@@ -19,8 +20,10 @@
 
 <style scoped>
     .container {
+        margin: auto;
         display: grid;
         padding: 1vw;
+        
     }
     .place-cards {
         margin: 0 0 0 0.5vh;
@@ -37,13 +40,18 @@
     @media screen and (min-width: 960px) {
         .container {
             grid-template-columns: 3fr 1fr;
+            width: 85vw;
+            height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0px 8px 15px rgb(119, 119, 119);
+            overflow: hidden;
         }
         .card-zone {
-            height: 95vh;
+            height: 75vh;
         }
     }
     @media screen and (max-width: 960px) {
-        .container { grid-template-rows: 1fr 1fr; }
+        .container { grid-template-rows: 50vh 50vh; }
         .place-cards {
             height: 100vw;
         }
@@ -70,7 +78,8 @@
         },
         data() {
             return {
-                placeInfo: null
+                placeInfo: null,
+                key: 0
             }
         },
         mounted() {
@@ -81,6 +90,11 @@
             .catch((e) => {
                 alert('장소 세부 정보를 불러오는 데 실패했습니다!')
             })
+        },
+        methods: {
+            updateView() {
+                this.key += 1;
+            }
         }
     }
 </script>
