@@ -2,7 +2,7 @@
     <div class="container">
         <Map @place="getInfo"/>
         <div class="placeform">
-            <p>장소 등록</p>
+            <p>장소 정보 수정</p>
             <label for="file">{{ fileLabel }}</label>
             <input @change="uploadImage($event)" id="file" type="file" accept="image/*">
             <input v-model="placeName" type="text" placeholder="장소명(필수)">
@@ -12,7 +12,7 @@
             <input v-model="placeTime" type="text" placeholder="운영시간(선택)">
             <textarea v-model="placeDescription" placeholder="여기는 어떤 장소인지 설명해주세요!(선택)"></textarea>
             <legend><input type="checkbox">[선택] 개인정보 수집 및 이용 동의</legend>
-            <button @click="submit()">장소 등록!</button>
+            <button @click="submit()">장소 정보 변경</button>
         </div>
     </div>
 </template>
@@ -59,6 +59,7 @@
         margin: auto;
         padding: 1rem;
         display: grid;
+        
     }
     input,textarea {
         border: solid 1.5px #000000;
@@ -96,7 +97,7 @@
             width: 85vw;
             height: 80vh;
             border-radius: 10px;
-            box-shadow: 0px 8px 15px rgb(123, 123, 123);
+            box-shadow: 0px 8px 15px rgba(123, 123, 123);
             overflow: hidden;
         }
         .placeform {
@@ -125,16 +126,16 @@
 </style>
 
 <script>
-    import Map from '@/components/Map.vue';
+    import Map from '@/components/Map.vue'
     import axios from 'axios';
-
     export default {
-        name: "AddPlace",
+        name: "AdjustPlace",
         components: {
-            Map
+            Map,
         },
         data() {
             return {
+                placeID: null,
                 placeAddress: null,
                 placeLocation: null,
                 image: null,
@@ -177,7 +178,7 @@
                 formData.append('created_at', date)
                 formData.append('updated_at', date)
                 formData.append('uploader', sessionStorage.getItem('nickname'))
-                axios.post(process.env.VUE_APP_BACKEND_ADDRESS+"/place/add/", 
+                axios.post(process.env.VUE_APP_BACKEND_ADDRESS+"/place/adjust/"+this.placeID+'/', 
                     formData
                     ,{ headers: { 'Content-Type': 'multipart/form-data', Authorization: 'Token '+sessionStorage.getItem('userToken')}
                 })
@@ -193,6 +194,21 @@
                 alert("모든 정보를 다 입력해주세요!")
             }
         }
+        },
+        beforeMount() {
+            this.placeID = this.$route.params.placeID
+        },
+        mounted() {
+            axios.get(process.env.VUE_APP_BACKEND_ADDRESS+'/place/get/'+this.placeID+'/')
+            .then((res) => {
+                this.placeName = res.data.name
+                this.placeLocation = res.data.lat+', '+res.data.lng
+                this.placeAddress = res.data.address
+                this.placeContact = res.data.contact
+                this.placeHomepage = res.data.homepage
+                this.placeTime = res.data.time
+                this.placeDescription = res.data.description
+            })
         }
     }
 </script>

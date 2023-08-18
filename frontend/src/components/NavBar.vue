@@ -170,6 +170,7 @@
 </style>
 
 <script>
+    import axios from 'axios'
     export default {
         name: "NavBar",
         data() {
@@ -212,10 +213,20 @@
                 }
             },
             logout() {
-                sessionStorage.removeItem('userToken');
-                sessionStorage.removeItem('username');
-                sessionStorage.removeItem('level');
-                this.$forceUpdate();
+                axios.post(process.env.VUE_APP_BACKEND_ADDRESS + '/auth/logout/',
+                    {},
+                    { headers : { Authorization: 'Token '+sessionStorage.getItem('userToken') }},
+                )
+                .then(res => {
+                    console.log(res)
+                    sessionStorage.removeItem('userToken');
+                    sessionStorage.removeItem('username');
+                    sessionStorage.removeItem('level');
+                    this.$forceUpdate();
+                })
+                .catch(e => {
+                    console.log(e)
+                })
             }
         }
     }

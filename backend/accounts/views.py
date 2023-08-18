@@ -26,10 +26,15 @@ def user_login(request):
 
         if not user:
             user = authenticate(username=username, password=password)
-
-        nickname = CustomUser.objects.filter(username=username).values('nickname')[0]
-        level_id = CustomUser.objects.filter(username=username).values('levels')[0]
-        level = UserLevelSerializer(UserLevel.objects.get(id=level_id['levels'])).data['level']
+            nickname = CustomUser.objects.filter(username=username).values('nickname')[0]
+            level_id = CustomUser.objects.filter(username=username).values('levels')[0]
+            level = UserLevelSerializer(UserLevel.objects.get(id=level_id['levels'])).data['level']
+        else:
+            user = authenticate(username=user, password=password)
+            nickname = CustomUser.objects.filter(username=user).values('nickname')[0]
+            level_id = CustomUser.objects.filter(username=user).values('levels')[0]
+            level = UserLevelSerializer(UserLevel.objects.get(id=level_id['levels'])).data['level']
+        
         if user:
             token, _ = Token.objects.get_or_create(user=user)
             return Response({'token': token.key, 'nickname': nickname, 'level': level }, status=status.HTTP_200_OK)

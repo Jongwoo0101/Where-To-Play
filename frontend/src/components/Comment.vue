@@ -1,6 +1,9 @@
 <template>
     <div class="comment-box">
-        <p class="username">{{ username }}</p>
+        <div class="header">
+            <p class="username">{{ username }}</p>
+            <p class="delete">삭제하기</p>
+        </div>
         <p class="comment">{{ commentValue }}</p>
         <p class="created_at">{{ created_at }}</p>
     </div>
@@ -15,10 +18,18 @@
         box-shadow: 0 0.1em 0.1em 0.1em #dddddd;
         padding: 0.5em;
     }
-    .comment-box>.username {
+    .header {
+        display: flex;
+        width: 100%;
+    }
+    .header>.username {
         font-weight: 600;
-        text-align: left;
-        margin: 0.2em 0 0.2em 0;
+        margin: 0.2em auto 0.2em 0;
+    }
+    .header>.delete {
+        font-size: 9pt;
+        color: #aaaaaa;
+        margin: 0.2em 0 0.2em auto;
     }
     .comment-box>.comment {
         margin: 0;
@@ -30,6 +41,7 @@
         font-size: 8pt;
         margin: 0;
     }
+    
 </style>
 
 <script>

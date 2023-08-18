@@ -41,6 +41,11 @@ const routes = [
     path: '/thememap',
     name: 'thememap',
     component: require('@/views/ThemeMap.vue').default
+  },
+  {
+    path: '/adjustplace/:placeID',
+    name: 'adjustplace',
+    component: require('@/views/AdjustPlace.vue').default
   }
 ]
 
