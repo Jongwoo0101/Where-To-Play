@@ -10,7 +10,7 @@
             <input v-model="placeContact" type="text" placeholder="연락처(선택)">
             <input v-model="placeHomepage" type="text" placeholder="홈페이지(선택)">
             <input v-model="placeTime" type="text" placeholder="운영시간(선택)">
-            <textarea v-model="placeDescription" placeholder="여기는 어떤 장소인지 설명해주세요!(선택)"></textarea>
+            <input v-model="placeDescription" type="text" placeholder="어떤 장소인지 설명해주세요(선택)">
             <legend><input type="checkbox">[선택] 개인정보 수집 및 이용 동의</legend>
             <button @click="submit()">장소 등록!</button>
         </div>
@@ -58,7 +58,7 @@
     .container {
         display: grid;
     }
-    input,textarea {
+    input {
         border: solid 1.5px #000000;
         border-radius: 1rem;
         background: none;
@@ -67,7 +67,7 @@
         color: #000000;
         transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
     }
-    input:focus, textarea:focus {
+    input:focus {
         outline: none;
         border: 1.5px solid #1a73e8;
     }
