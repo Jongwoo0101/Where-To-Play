@@ -23,3 +23,15 @@ p.place-details{
 .subimage-container>img {
     max-height: 300px;
 }
+div.place-description {
+    text-align: left;
+    white-space: pre-wrap;
+    margin: 0.5em 0 1em 0;
+    padding: 1em;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px 3px rgba(0, 0, 0, 0.1);
+}
+p.place-rating{
+    font-weight: 500;
+    font-size: 14pt;
+}

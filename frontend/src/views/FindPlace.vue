@@ -1,12 +1,12 @@
 <template>
     <div class="container">
-        <Map />
+        <Map @placeInfo="focusCard"/>
         <div class="place-cards">
             <p>운동장 목록</p>
             <div class="card-zone">
                 <PlaceCard
-                :key="key"
                 v-for="data in placeInfo"
+                :ref="data.id"
                 :placeId="data.id"
                 :placeImage="data.image"
                 :placeName="data.name"
@@ -23,11 +23,9 @@
         margin: auto;
         display: grid;
         padding: 1vw;
-        
     }
     .place-cards {
-        margin: 0 0 0 0.5vh;
-        display: block;
+        margin: 0 0.5vh 0 0.5vh;
     }
     .card-zone > div {
         margin: 10px auto 10px auto;
@@ -35,7 +33,7 @@
     .card-zone {
         position: relative;
         z-index: 2;
-        overflow: scroll;
+        overflow-y: scroll;
     }
     @media screen and (min-width: 960px) {
         .container {
@@ -92,9 +90,11 @@
             })
         },
         methods: {
-            updateView() {
-                this.key += 1;
-            }
+            focusCard(id) {
+                console.log(this.$refs[id][0].$el.scrollIntoView({
+                    behavior: 'smooth', block: 'start', inline: 'nearest', top: 0
+                }))
+            } 
         }
     }
 </script>

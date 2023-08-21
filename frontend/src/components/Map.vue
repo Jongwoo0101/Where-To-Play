@@ -110,7 +110,7 @@ import { toRaw } from 'vue';
               content: content,
             });
 
-            kakao.maps.event.addListener(marker, 'mouseover', this.makeOverListener(toRaw(this.map), marker, infoWindow))
+            kakao.maps.event.addListener(marker, 'mouseover', this.makeOverListener(toRaw(this.map), marker, infoWindow, response.data[i].id))
             kakao.maps.event.addListener(marker, 'mouseout', this.makeOutListener(infoWindow))
           }
         })
@@ -135,9 +135,11 @@ import { toRaw } from 'vue';
         if (this.address != null)
           this.$emit('place', [this.location, this.address])
       },
-      makeOverListener(map, marker, infowindow) {
+      makeOverListener(map, marker, infowindow, id) {
+        var here = this
         return function() {
-          infowindow.open(map, marker);
+          here.$emit('placeInfo', id)
+          infowindow.open(map, marker);          
         };
       },
       makeOutListener(infowindow) {

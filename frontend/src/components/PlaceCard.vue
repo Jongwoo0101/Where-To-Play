@@ -9,10 +9,13 @@
       <div class="content">
         <p class="title is-4">{{ placeName }}</p>
         <p>{{ placeLocation }}</p>
-        <p class="place-description">{{ placeDescription }}</p>
+        <p class="place-rating">별점: {{ ratings }} / 5</p>
         <a @click="open()">{{ openDetail }}</a>
         <div class="place-details" v-if="placeDetail">
-          별점: {{ ratings }} / 5 <br>
+          <div class="place-description">
+            장소 소개:<br>
+            {{ placeDescription }}
+          </div>
           상태: {{ openStatus.status_updated_at? (openStatus.open_status? "열려있음":"닫힘"):"정보 없음" }}
           <button style="background-color: #23C55D; border: 0;" @click="updateOpenStatus(true)">열렸어요</button><button style="background-color: #F84F31; border: 0;" @click="updateOpenStatus(false)">닫혔어요</button>
           <br>
