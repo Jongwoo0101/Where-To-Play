@@ -103,6 +103,9 @@
   import CryptoJS from 'crypto-js'
   export default {
     name: "signup",
+    components: {
+      'dropdown': dropdown
+    },
     data() {
       return {
         id: '',
@@ -175,7 +178,6 @@
       },
       methodToRunOnSelect(option, id) {
         this.priority[id] = option.name;
-        alert(this.priority[id])
       },
     }
   };
