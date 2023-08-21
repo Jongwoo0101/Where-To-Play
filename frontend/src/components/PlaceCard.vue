@@ -107,9 +107,9 @@
             .then(() => {
               this.reloadData()
               setTimeout(() => {
-                for (let i = 0; i < this.response.ratings.length; i++) {
                 var rate = 0;
-                rate+=this.response.ratings[i].rating
+                for (let i = 0; i < this.response.ratings.length; i++) {
+                  rate+=this.response.ratings[i].rating
                 }
                 rate/=this.response.ratings.length
                 this.ratings = rate;
@@ -198,8 +198,8 @@
                 if (this.response.homepage.search("https://") != 0 && this.response.homepage.search("http://") != 0)
                   this.response.homepage = "//" + this.response.homepage
                 if (this.response.ratings[0] != null)  {// ratings data가 available하다면 평균 내기
+                  var rate = 0;
                   for (let i = 0; i < this.response.ratings.length; i++) {
-                    var rate = 0;
                     rate+=this.response.ratings[i].rating
                   }
                   rate/=this.response.ratings.length
