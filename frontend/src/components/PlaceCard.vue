@@ -33,7 +33,8 @@
             <div class="display-comments">
               <Comment
               v-for="comment in this.response.comments.slice().reverse()"
-              :key="comment.id"
+              :place_id="this.placeId"
+              :comment_id="comment.id"
               :username="comment.username"
               :commentValue="comment.comment"
               :created_at="comment.comment_uploaded_at"

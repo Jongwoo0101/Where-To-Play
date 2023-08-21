@@ -2,7 +2,7 @@
     <div class="comment-box">
         <div class="header">
             <p class="username">{{ username }}</p>
-            <p class="delete" @click="delete_comment">삭제하기</p>
+            <p @click="deleteComment" class="delete">삭제하기</p>
         </div>
         <p class="comment">{{ commentValue }}</p>
         <p class="created_at">{{ created_at }}</p>
@@ -49,16 +49,28 @@
     export default {
         name: 'Comment',
         props: {
+            place_id: 0,
+            comment_id: 0,
             username: '유저 이름',
             commentValue: '댓글 내용',
             created_at: '생성 시각',
         },
         methods: {
-            delete_comment() {
-                if (confirm("댓글을 정말로 삭제하시겠습니까?")) {
-                    alert("삭제")
-                } else {
-                    alert("삭제 안함")
+            deleteComment() {
+                if (confirm("정말로 댓글을 삭제하시겠습니까?")) {
+                    axios.delete(process.env.VUE_APP_BACKEND_ADDRESS+'/place/comment/'+this.place_id+'/', {
+                    headers: { Authorization: 'Token '+sessionStorage.getItem('userToken') },
+                    data: { 'comment_id': this.comment_id }
+                    })
+                    .then(res => {
+                        alert("삭제되었습니다.")
+                        console.log(res)
+                    })
+                    .catch(e => {
+                        if (e.message == "Request failed with status code 403") alert("본인의 댓글만 삭제할 수 있습니다!")
+                        else if (e.message == "Request failed with status code 401") alert("로그인 후 삭제하세요!")
+                        else alert("오류가 발생했습니다.")
+                    })
                 }
             }
         }

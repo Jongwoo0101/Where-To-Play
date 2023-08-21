@@ -217,8 +217,7 @@
                     {},
                     { headers : { Authorization: 'Token '+sessionStorage.getItem('userToken') }},
                 )
-                .then(res => {
-                    console.log(res)
+                .then(() => {
                     sessionStorage.removeItem('userToken');
                     sessionStorage.removeItem('username');
                     sessionStorage.removeItem('level');
