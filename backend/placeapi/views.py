@@ -59,7 +59,7 @@ def adjust_place_detail(request, placeinfo_id):
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'DELETE'])
 @permission_classes([IsAuthenticatedOrReadOnly])
 def comment(request, placeinfo_id):
     if (request.method == 'POST'):
@@ -68,7 +68,7 @@ def comment(request, placeinfo_id):
             place = PlaceInfo.objects.get(id=placeinfo_id)
             comment_value = request.data.get('comment')
 
-            comment = PlaceComment.objects.create(username=user, comment=comment_value)
+            comment = PlaceComment.objects.create(username=user.nickname, comment=comment_value)
             place.comments.add(comment)
             place.save()
             serializer = PlaceCommentSerializer(comment)
@@ -80,6 +80,17 @@ def comment(request, placeinfo_id):
         model = PlaceInfo.comments.all()
         serializer = PlaceCommentSerializer(model)
         return Response(serializer.data)
+    
+    elif (request.method == 'DELETE'):
+        comment_id = request.data.get('comment_id')
+        print(comment_id)
+        comment = PlaceComment.objects.get(id=comment_id)
+
+        if comment.username != request.user.nickname:
+            return Response("본인 댓글만 삭제할 수 있습니다.", status=status.HTTP_403_FORBIDDEN)
+        
+        comment.delete()
+        return Response("댓글이 삭제되었습니다", status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticatedOrReadOnly])
@@ -152,9 +163,3 @@ def placestatus(request, placeinfo_id):
     
     else:
         return Response(status=status.HTTP_401_UNAUTHORIZED)
-
-# @api_view(['GET'])
-# def get_placesubinfo(request):
-#     model = PlaceSubInfo.objects.all()
-#     serializer = PlaceSubInfoSerializer(model, many=True)
-#     return Response(serializer.data)
