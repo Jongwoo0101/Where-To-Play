@@ -12,9 +12,12 @@
           <button class="send-sms" @click="sendSMS()">인증</button>
         </div>
         <input type="text" placeholder="인증번호 (이후 구현)">
-        <input type="text" placeholder="우선순위 1순위" v-model="priority[0]" required>
-        <input type="text" placeholder="우선순위 2순위" v-model="priority[1]" required>
-        <input type="text" placeholder="우선순위 3순위" v-model="priority[2]" required>
+        <dropdown 
+            v-for="id in 3"
+            :options="optionsList"
+            :placeholder="'우선순위 '+id+'순위 (필수)'"
+            :selected="priority[id-1]"
+            v-on:updateOption="(option) => methodToRunOnSelect(option, id)"/>
         <button class="submit" @click="submit()">제출</button>
       </div>
     </div>
@@ -96,6 +99,7 @@
   
   <script>
   import axios from 'axios'
+  import dropdown from 'vue-dropdowns';
   import CryptoJS from 'crypto-js'
   export default {
     name: "signup",
@@ -110,6 +114,7 @@
         priority: ['', '', ''],
         verified: false,
         verifycode: null,
+        optionsList: [{name: '#넓은구장'}, {name: '#편리한교통'}, {name: '#최신시설'}, {name: '#깔끔한구장'}, {name: '#작은구장'}, {name: '#저렴한이용'}, {name: '#프리미엄시설'}]
       };
     },
     methods: {
@@ -167,7 +172,11 @@
         } else {
           alert("전화번호를 형식에 맞게 입력하세요");
         }
-      }
+      },
+      methodToRunOnSelect(option, id) {
+        this.priority[id] = option.name;
+        alert(this.priority[id])
+      },
     }
   };
   </script>
