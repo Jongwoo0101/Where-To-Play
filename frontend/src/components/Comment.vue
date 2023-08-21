@@ -57,6 +57,7 @@
         },
         methods: {
             deleteComment() {
+                var here = this
                 if (confirm("정말로 댓글을 삭제하시겠습니까?")) {
                     axios.delete(process.env.VUE_APP_BACKEND_ADDRESS+'/place/comment/'+this.place_id+'/', {
                     headers: { Authorization: 'Token '+sessionStorage.getItem('userToken') },
@@ -64,7 +65,7 @@
                     })
                     .then(res => {
                         alert("삭제되었습니다.")
-                        console.log(res)
+                        here.$parent.reloadData()
                     })
                     .catch(e => {
                         if (e.message == "Request failed with status code 403") alert("본인의 댓글만 삭제할 수 있습니다!")
