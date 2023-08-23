@@ -10,6 +10,9 @@
 </template>
 
 <style src="@/assets/bulma.min.css" scoped>
+.h2 {
+  font: bold;
+}
 </style>
 
 <script>

@@ -1,3 +1,4 @@
+TODO : 장소 등록 UI 수정 
 <template>
     <div class="container">
         <Map @place="getInfo"/>
