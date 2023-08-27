@@ -49,12 +49,12 @@
         }
     }
     @media screen and (max-width: 960px) {
-        .container { grid-template-rows: 50vh 50vh; }
+        .container { grid-template-rows: 30vh 100vh; }
         .place-cards {
-            height: 100vw;
+            height: 100vh;
         }
         .card-zone {
-            height: 100vw;
+            height: 100vh;
         }
     }
     p {

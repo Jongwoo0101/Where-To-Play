@@ -111,7 +111,7 @@
     }
     @media screen and (max-width: 960px) {
         .container {
-            grid-template-rows: 50vh 50vh;
+            grid-template-rows: 30vh 70vh;
         }
         .placeform {
             margin: auto;
@@ -120,7 +120,11 @@
             margin: 20px;
         }
         .placeform > input[type="text"],input[type="file"],textarea {
-            margin: 20px;
+            margin: 20px auto 0 auto;
+            resize: none;
+        }
+        .placeform > label {
+            margin: 10px auto 10px auto;
         }
     }
 </style>

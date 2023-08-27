@@ -26,7 +26,7 @@
 }
 @media screen and (max-width: 960px) {
   #map {
-    height: 50vh;
+    height: 30vh;
   }
 }
 </style>
