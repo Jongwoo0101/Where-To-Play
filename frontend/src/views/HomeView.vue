@@ -2,7 +2,7 @@
   <div class="home">
     <div class="content is-medium">
       <h2 class="title">Where To Play, Where You Want</h2>
-      <p class="subtitle">여러분에게 알맞는 운동장을<br>실시간으로 확인해보세요!</p>
+      <p class="subtitle">여러분에게 알맞는 운동장을 실시간으로 확인해보세요!</p>
       <router-link to="/findplace">
         <button class="button custom-button">지금 시작하기</button>
       </router-link>
@@ -39,7 +39,7 @@
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: #666;
   margin-bottom: 2rem;
 }
