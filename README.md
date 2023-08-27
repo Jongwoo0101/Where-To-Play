@@ -145,14 +145,25 @@
 <br />
 
 ## ▶️ 실행
-터미널에서 다음 명령어를 차례대로 입력하세요
+민감한 정보는 환경변수 설정으로 분리되어 있습니다. 개인의 어플리케이션 키로 변경/입력 후 다음 순서대로 실행하세요.
+- Django key, Kakaomap API Key, Django 서버 포트
+
+### 프론트엔드
 ```
-cd frontend
-```
-```
-npm run serve
+cd frontend; npm run serve;
 ```
 
+### 백엔드
+
+#### SSL 인증서 X
+```
+cd ../backend; python manage.py runserver
+```
+
+#### SSL 인증서 O
+```
+cd ../backend; python manage.py runsslserver --certificate (cert_file) --key (key_file) 0.0.0.0:(port_number)
+```
 
 
 
