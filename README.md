@@ -121,18 +121,18 @@
 [![GitHub release](https://img.shields.io/github/release/Jongwoo0101/Where-To-Play.svg)](https://github.com/Jongwoo0101/Where-To-Play/releases/latest)
 | 작업 완료 여부 | 작업 내용 |
 |------|------|
-| :ballot_box_with_check:  완료 | 로그인, 회원가입, 운동장 찾기, 운동장 등록 ([테마지도를 제외한 모든 기능 구현완료](https://github.com/Jongwoo0101/Where-To-Play/commit/4ef939012cda0064fb02e82b6742d5b43e0a80a6)) |
-| :x:  미완료 | 테마지도 |
+| ✅  완료 | 로그인, 회원가입, 운동장 찾기, 운동장 등록 ([테마지도를 제외한 모든 기능 구현완료](https://github.com/Jongwoo0101/Where-To-Play/commit/4ef939012cda0064fb02e82b6742d5b43e0a80a6)) |
+| ❌  미완료 | 테마지도 |
 
 <br />
 
 **역할별 진행상황**
 | 역할 | 진행여부 |
 |------|------|
-| 뱅커/포토그래퍼 | 영수증/남은금액 정리하여 개인톡, 프로젝트 사진/회의 사진 정리하여 개인톡 :ballot_box_with_check:  |
-| 디자이너 | 로고 디자인 :ballot_box_with_check:  |
+| 뱅커/포토그래퍼 | 영수증/남은금액 정리하여 개인톡, 프로젝트 사진/회의 사진 정리하여 개인톡 ✅  |
+| 디자이너 | 로고 디자인 ✅  |
 | 마케터 | 웹사이트 홍보 (예정) |
-| 커뮤니케이터 | 월요일에 프로젝트 완료 현황 개인톡 :ballot_box_with_check:  |
+| 커뮤니케이터 | 월요일에 프로젝트 완료 현황 개인톡 ✅  |
 
 <br />
 
