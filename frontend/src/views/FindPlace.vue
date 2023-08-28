@@ -91,9 +91,9 @@
         },
         methods: {
             focusCard(id) {
-                console.log(this.$refs[id][0].$el.scrollIntoView({
+                this.$refs[id][0].$el.scrollIntoView({
                     behavior: 'smooth', block: 'start', inline: 'nearest', top: 0
-                }))
+                })
             } 
         }
     }
