@@ -39,7 +39,7 @@
         .container {
             grid-template-columns: 3fr 1fr;
             width: 85vw;
-            height: 80vh;
+            height: 83vh;
             border-radius: 10px;
             box-shadow: 0px 8px 15px rgb(119, 119, 119);
             overflow: hidden;

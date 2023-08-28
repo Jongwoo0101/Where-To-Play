@@ -113,7 +113,7 @@ import { toRaw } from 'vue';
                 content: toggleContent,
                 position: position
               })
-              toggleContent.addEventListener('touchstart', () => {
+              toggleContent.addEventListener('touchstart', () => { // 모바일 터치 정보 토글 이벤트
                 customOverlay.setMap(null)
                 if (toggleContent.textContent === '') {
                   toggleContent.style.cssText = 'padding: 1px; background-color: white; border-radius: 5px; opacity: 70%;'
@@ -132,7 +132,6 @@ import { toRaw } from 'vue';
                 })
                 customOverlay.setMap(this.map)
               })
-              
               customOverlay.setMap(this.map)
             } else {
               let marker = new kakao.maps.Marker({
