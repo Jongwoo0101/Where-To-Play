@@ -8,7 +8,7 @@
         <input type="text" placeholder="닉네임 (최대 12글자)" v-model="nickname" required>
         <input type="text" placeholder="이름" v-model="name" required>
         <div class="input-button">
-          <input type="tel" pattern="[0-1]{3}-[0-9]{4}-[0-9]{4}" placeholder="전화번호 (-제외)" v-model="phonenumber" required>
+          <input type="tel" ref="phoneNumberInput" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="전화번호 (-제외)" v-model="phonenumber" @input="formatPhoneNumber" required/>
           <button class="send-sms" @click="sendSMS()">인증</button>
         </div>
         <input type="text" placeholder="인증번호 (이후 구현)">
@@ -178,6 +178,16 @@
       },
       methodToRunOnSelect(option, id) {
         this.priority[id] = option.name;
+      },
+      formatPhoneNumber() {
+        const phoneNumber = this.$refs.phoneNumberInput.value.replace(/\D/g, "");
+        if (phoneNumber.length >= 4) {
+        this.phonenumber = `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 7)}-${phoneNumber.slice(7)}`;
+        } else if (phoneNumber.length >= 3) {
+        this.phonenumber = `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
+        } else {
+        this.phonenumber = phoneNumber;
+        }
       },
     }
   };
