@@ -143,7 +143,7 @@
                   realname: this.name,
                   email: this.email,
                   password: this.password,
-                  phonenumber: this.phonenumber,
+                  phonenumber: this.phonenumber.replace(/\D/g, ""),
                   first_priority: this.priority[0],
                   second_priority: this.priority[1],
                   third_priority: this.priority[2],
@@ -169,7 +169,7 @@
         }
       },
       sendSMS() {
-        if (/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/.test(this.phonenumber)) {
+        if (/^[0]{1}[1]{1}[0]{1}-[0-9]{4}-[0-9]{4}$/.test(this.phonenumber)) {
           alert("인증되었습니다");
           this.verified = true;
         } else {
@@ -177,17 +177,18 @@
         }
       },
       methodToRunOnSelect(option, id) {
-        this.priority[id] = option.name;
+        this.priority[id-1] = option.name;
       },
       formatPhoneNumber() {
         const phoneNumber = this.$refs.phoneNumberInput.value.replace(/\D/g, "");
         if (phoneNumber.length >= 4) {
-        this.phonenumber = `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 7)}-${phoneNumber.slice(7)}`;
+        this.phonenumber = `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 7)}-${phoneNumber.slice(7,11)}`;
         } else if (phoneNumber.length >= 3) {
         this.phonenumber = `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
         } else {
         this.phonenumber = phoneNumber;
         }
+        console.log(this.phonenumber, phoneNumber)
       },
     }
   };
