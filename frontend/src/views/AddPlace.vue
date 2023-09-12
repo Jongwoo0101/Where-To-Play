@@ -38,11 +38,11 @@ TODO : 장소 등록 UI 수정
         text-align: center;
         margin: auto;
         padding: 10px 50px 10px 50px;
-        border: solid 2px #999999;
+        border: solid 1.5px #999999;
         border-radius: 5px;
     }
     label:hover {
-        border: solid 2px #1a73e8;
+        border: solid 1.5px #1a73e8;
     }
     input[type="file"] {
         position: absolute;
@@ -62,20 +62,23 @@ TODO : 장소 등록 UI 수정
         display: grid;
     }
     input,textarea {
-        border: solid 1.5px #000000;
-        border-radius: 1rem;
+        border: 0;
         background: none;
+        outline: none;
         padding: 1rem;
         font-size: 1rem;
         color: #000000;
-        transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+        transition: box-shadow 0.2s;
     }
     input:focus, textarea:focus {
+        border: none;
         outline: none;
-        border: 1.5px solid #1a73e8;
+        box-shadow: 0px 1px 1px rgb(46, 116, 255);
     }
     button {
-        border: 0;
+        outline: none;
+        border: none;
         box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
         border-radius: 1rem;
         transition: background-color 0.5s;
@@ -115,6 +118,7 @@ TODO : 장소 등록 UI 수정
         }
         .placeform {
             margin: auto;
+            width: 80vw;
         }
         p {
             margin: 20px;
