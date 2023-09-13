@@ -126,7 +126,7 @@ def rating(request, placeinfo_id):
         rating_value = request.data.get('rating')
 
         try: # rating은 1명이 1개만 쓸 수 있기에 평점 존재 시 수정 처리
-            rating = PlaceRating.objects.get(user=user)
+            rating = place.ratings.get(user=user)
             rating.rating = rating_value
             rating.save()
         except PlaceRating.DoesNotExist:
