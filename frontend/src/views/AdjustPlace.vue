@@ -2,8 +2,8 @@
     <div class="container">
         <Map @place="getInfo"/>
         <div class="placeform">
-            <p>장소 정보 수정</p>
-            <label for="file">{{ fileLabel }}</label>
+            <p class="title">장소 정보 수정</p>
+            <label class="file" for="file">{{ fileLabel }}</label>
             <input @change="uploadImage($event)" id="file" type="file" accept="image/*">
             <input v-model="placeName" type="text" placeholder="장소명(필수)">
             <input v-model="placeAddress" type="text" placeholder="위치(필수, 지도 클릭시 지정)" disabled>
@@ -11,37 +11,35 @@
             <input v-model="placeHomepage" type="text" placeholder="홈페이지(선택)">
             <input v-model="placeTime" type="text" placeholder="운영시간(선택)">
             <textarea v-model="placeDescription" placeholder="여기는 어떤 장소인지 설명해주세요!(선택)"></textarea>
-            <legend><input type="checkbox">[선택] 개인정보 수집 및 이용 동의</legend>
+            <div class="checkbox-area">
+                <input type="checkbox"/><label class="checkbox">[선택] 개인정보 수집 및 이용 동의</label>
+            </div>
             <button @click="submit()">장소 정보 변경</button>
         </div>
     </div>
 </template>
 
 <style scoped>
-    .placeform {
-        height: 80vh;
-        overflow: scroll;
-    }
-    p {
+    p.title {
         font-weight: 700;
         font-size: 16pt;
         text-align: center;
-        margin: 0;
+        margin: 1em;
         padding: 0;
         height: fit-content;
     }
-    .file-form {
-        border: 3px solid #999999
-    }
-    label {
+    label.file {
         text-align: center;
         margin: auto;
         padding: 10px 50px 10px 50px;
-        border: solid 2px #999999;
+        border: solid 1.5px #999999;
         border-radius: 5px;
     }
-    label:hover {
-        border: solid 2px #1a73e8;
+    label.file:hover {
+        border: solid 1.5px #1a73e8;
+    }
+    label.checkbox {
+        margin-left: 0.5em;
     }
     input[type="file"] {
         position: absolute;
@@ -55,27 +53,37 @@
         display: block;
         margin: 1vh auto auto auto;
     }
+    div.checkbox-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0.5em;
+    }
     .container {
         margin: auto;
         padding: 1rem;
         display: grid;
-        
     }
     input,textarea {
-        border: solid 1.5px #000000;
-        border-radius: 1rem;
+        border: 0;
         background: none;
+        outline: none;
         padding: 1rem;
         font-size: 1rem;
         color: #000000;
-        transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        -webkit-appearance: none;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+        transition: box-shadow 0.2s;
     }
     input:focus, textarea:focus {
+        border: none;
         outline: none;
-        border: 1.5px solid #1a73e8;
+        box-shadow: 0px 1px 2px rgb(46, 116, 255);
+        -webkit-appearance: none;
     }
     button {
-        border: 0;
+        outline: none;
+        border: none;
         box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
         border-radius: 1rem;
         transition: background-color 0.5s;
@@ -83,13 +91,9 @@
         margin: 10px;
         padding: 15px;
     }
-
     button:hover {
         transition: background-color 0.5s;
         background-color: #1a73e8;
-    }
-    legend {
-        margin: auto;
     }
     @media screen and (min-width: 960px) {
         .container {
@@ -97,13 +101,15 @@
             width: 85vw;
             height: 80vh;
             border-radius: 10px;
-            box-shadow: 0px 8px 15px rgba(123, 123, 123);
+            box-shadow: 0px 8px 15px rgb(123, 123, 123);
             overflow: hidden;
         }
         .placeform {
             margin: auto;
             width: 20vw;
-            display: grid;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
         }
         .placeform > input[type="text"],input[type="file"],textarea {
             margin: 10px;
@@ -111,17 +117,22 @@
     }
     @media screen and (max-width: 960px) {
         .container {
-            grid-template-rows: 30vh 70vh;
+            grid-template-rows: 30vh auto;
         }
         .placeform {
-            margin: auto;
+            margin: 40px auto 0 auto;
+            width: 80vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         p {
             margin: 20px;
         }
-        .placeform > input[type="text"],input[type="file"],textarea {
+        .placeform > input[type="text"],input[type="file"],textarea,button {
             margin: 20px auto 0 auto;
             resize: none;
+            width: -webkit-fill-available;
         }
         .placeform > label {
             margin: 10px auto 10px auto;
