@@ -117,8 +117,7 @@
                 }
                 rate/=this.response.ratings.length
                 this.ratings = rate;
-              }, 200)
-                        
+              }, 500)
             })
             .catch(e => {
               alert("해당 기능은 로그인 후 사용 가능합니다.")
