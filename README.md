@@ -2,7 +2,7 @@
 ![banner](https://github.com/Jongwoo0101/Where-To-Play/assets/96978536/937cba69-9b9c-4da9-8560-075ea69b5243)
 현대해상 X 어썸스쿨 하이챌린지스쿨에서 진행하는 4조(*자료구조*) 프로젝트.   
 ➡️[사이트 바로가기](https://wheretoplay.kr)⬅️
-🔥[발표자료 바로가기](https://www.canva.com/design/DAFsgPdSRWw/6qAxhTQyMFmUomuYKxUd3w/view?utm_content=DAFsgPdSRWw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)🔥 [<img src="https://img.shields.io/badge/instagram-E4405F?style=flat&logo=instagram&logoColor=white"/>](https://www.instagram.com/wheretoplay.kr/)
+🔥[발표자료 바로가기](https://www.canva.com/design/DAFsgPdSRWw/6qAxhTQyMFmUomuYKxUd3w/view?utm_content=DAFsgPdSRWw&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)🔥 ♾️[최종 발표자료 바로가기](https://www.canva.com/design/DAFt63l65Sg/V57zlnjP_lh0PoPwZ6D0UA/edit?utm_content=DAFt63l65Sg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)♾️ [<img src="https://img.shields.io/badge/instagram-E4405F?style=flat&logo=instagram&logoColor=white"/>](https://www.instagram.com/wheretoplay.kr/)
 
 <br />
 
@@ -138,7 +138,8 @@
 <br />
 
 ## 📊  프로젝트 결과 🎉
-![IMG_5322](https://github.com/Jongwoo0101/Where-To-Play/assets/96978536/647e3a97-bc60-4355-a647-ef05529524ff)
+![IMG_5322](https://github.com/Jongwoo0101/Where-To-Play/assets/96978536/647e3a97-bc60-4355-a647-ef05529524ff)![IMG_5431](https://github.com/Jongwoo0101/Where-To-Play/assets/96978536/571aa514-91ce-4023-8959-d6249d9fc098)
+
 
 <br />
 
