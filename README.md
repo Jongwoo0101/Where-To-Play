@@ -139,7 +139,9 @@
 
 ## 📊  프로젝트 결과 🎉
 ![IMG_5322](https://github.com/Jongwoo0101/Where-To-Play/assets/96978536/647e3a97-bc60-4355-a647-ef05529524ff)![IMG_5431](https://github.com/Jongwoo0101/Where-To-Play/assets/96978536/571aa514-91ce-4023-8959-d6249d9fc098)
-
+```
+수고했다 얘들아
+```
 
 <br />
 
